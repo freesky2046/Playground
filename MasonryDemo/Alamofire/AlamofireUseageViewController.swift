@@ -9,7 +9,13 @@ import UIKit
 import Alamofire
 
 class AlamofireUseageViewController: UIViewController {
-
+    var dataList: [String] = [
+        "第一阶段:简单使用",
+        "第二阶段:细节控制",
+        "第三阶段:二次封装",
+        "第四阶段:增强封装",
+    ]
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,15 +24,18 @@ class AlamofireUseageViewController: UIViewController {
         //
         
         // MARK: - ⚠️  请求
-        /// 1. 发送请求: 非范型方法
+        /// 1. 发送请求: 非范型方法(无参数)
         /// ,String是遵从URLConvertible协议的, 因此不是最后一个方法
         /// parameters为nil, 那么优选第一个非范型方法
         let dataRequest = AF.request("https://httpbin.org/get")
         
+        /// 2.发送请求: 非范型方法,参数是字典
+        
+        
         
         // MARK: - ⚠️  响应
         
-        /// 2.响应, 不做任何字节流转换
+        /// 响应, 不做任何字节流转换
         ///  只要接口通了就是成功
         dataRequest.response { response in
             // 1. 发出去的原始请求 (URLRequest)
@@ -76,6 +85,7 @@ class AlamofireUseageViewController: UIViewController {
             }
         }
         
+        /// 转换为String, 转换失败failure
         dataRequest.responseString { response in
             switch response.result {
             case .success(let res):
@@ -96,9 +106,9 @@ class AlamofireUseageViewController: UIViewController {
         }
         
         
-        // MARK: - ⚠️  字典/数组 参数编码
+        // MARK: - ⚠️  字典/数组(valid json object) 参数编码
         
-        // GET请求: value只能是简单的类型,参数无嵌套对象,url-encode
+        // 1. GET请求 url-encode: value只能是简单的类型,参数无嵌套对象,
         // https://httpbin.org/get?name=zhangsan&age=25&city=beijing&gender=male
         let params: [String: String] = ["name": "zhang", "age": "25", "city": "beijing", "gender": "male"]
         let url = "https://httpbin.org/get"
@@ -112,7 +122,7 @@ class AlamofireUseageViewController: UIViewController {
             }
         }
         
-
+        // 2. POST请求 表单编码: value嵌套类型,虽然也能转,但是兼容性差,不在是主流方案
         let url2 = "https://httpbin.org/post"
         let complexParams: [String: Any] = [
             "user": [
@@ -147,7 +157,7 @@ class AlamofireUseageViewController: UIViewController {
             }
         }
         
-        
+        /// 3.  POST 请求 JSON编码 支持value嵌套类型
         let dataRequest4 = AF.request(url2, method: .post, parameters: complexParams, encoding: JSONEncoding.default, headers: nil, interceptor: nil, requestModifier: nil)
         dataRequest4.responseString { response in
             switch response.result {
@@ -159,9 +169,20 @@ class AlamofireUseageViewController: UIViewController {
         }
         
         // MARK: - ⚠️ Codable模型参数编码
-        
-        
+
+        let para: HParams = HParams(name: "zhou", age: "25", gender: "male")
+        let dataRequest5 = AF.request(url, method: .get, parameters: para, encoder: URLEncodedFormParameterEncoder.default, headers: nil, requestModifier: nil)
+        dataRequest5.responseString { response in
+            switch response.result {
+            case .success(let res):
+                print("post json编码 后的res:\(res)")
+            case .failure(let error):
+                break
+            }
+        }
     }
 
 }
+
+
 

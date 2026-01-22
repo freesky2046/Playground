@@ -68,5 +68,67 @@
             landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "42BD4298-2A24-4C67-8D86-EF94C94D82F3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/Alamofire/Source/Core/ParameterEncoding.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "encode(_:with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "42BD4298-2A24-4C67-8D86-EF94C94D82F3 - cfedda58fcb876ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Alamofire.URLEncoding.encode(_: Alamofire.URLRequestConvertible, with: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.Sendable&gt;&gt;) throws -&gt; Foundation.URLRequest"
+                  moduleName = "Alamofire"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhouming/Desktop/MasonryDemo/Pods/Alamofire/Source/Core/ParameterEncoding.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "168"
+                  endingLineNumber = "168">
+               </Location>
+               <Location
+                  uuid = "42BD4298-2A24-4C67-8D86-EF94C94D82F3 - cfedda58fcb876ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Alamofire.URLEncoding.encode(_: Alamofire.URLRequestConvertible, with: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.Sendable&gt;&gt;) throws -&gt; Foundation.URLRequest"
+                  moduleName = "Alamofire"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhouming/Desktop/MasonryDemo/Pods/Alamofire/Source/Core/ParameterEncoding.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "168"
+                  endingLineNumber = "168">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7413A6BB-AF4F-4A3C-BC3B-D83F1B5910B5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/Alamofire/Source/Core/ParameterEncoding.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "encode(_:with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
