@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HParams: Codable, Sendable {
+nonisolated struct HParams: Codable, Sendable {
     var name: String?
     var age: String?
     var gender: String?

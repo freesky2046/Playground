@@ -3,10 +3,11 @@ import SnapKit
 
 class AlamofireViewController: UIViewController {
     var dataList: [String] = [
+        "第零阶段:基础知识",
         "第一阶段:简单使用",
-        "第二阶段:细节控制",
-        "第三阶段:二次封装",
-        "第四阶段:增强封装",
+        "第二阶段:二次封装",
+        "第三阶段:更多能力",
+        "第四阶段:深入源码",
     ]
     
     lazy var tableView: UITableView = {
@@ -38,13 +39,13 @@ extension AlamofireViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            let useage = AlamofireUseageViewController()
-            navigationController?.pushViewController(useage, animated: true)
+            let zero = AlamofireZeroViewController()
+            navigationController?.pushViewController(zero, animated: true)
         case 1:
-            let useage = AlamofireUseageViewController()
-            navigationController?.pushViewController(useage, animated: true)
+            let first = AlamofireFirstViewController()
+            navigationController?.pushViewController(first, animated: true)
         case 2:
-            let useage = AlamofireUseageViewController()
+            let useage = AlamofireFirstViewController()
             navigationController?.pushViewController(useage, animated: true)
         default:
             break

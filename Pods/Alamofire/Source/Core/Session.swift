@@ -253,12 +253,22 @@ open class Session: @unchecked Sendable {
         let encoding: any ParameterEncoding
         let headers: HTTPHeaders?
         let requestModifier: RequestModifier?
+        
+        init(url: any URLConvertible, method: HTTPMethod, parameters: Parameters?, encoding: any ParameterEncoding, headers: HTTPHeaders?, requestModifier: RequestModifier?) {
+            self.url = url
+            self.method = method
+            self.parameters = parameters
+            self.encoding = encoding
+            self.headers = headers
+            self.requestModifier = requestModifier
+
+        }
 
         func asURLRequest() throws -> URLRequest {
             var request = try URLRequest(url: url, method: method, headers: headers)
             try requestModifier?(&request)
-
-            return try encoding.encode(request, with: parameters)
+            let result = try encoding.encode(request, with: parameters)
+            return  result
         }
     }
 

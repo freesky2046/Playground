@@ -8,14 +8,8 @@
 import UIKit
 import Alamofire
 
-class AlamofireUseageViewController: UIViewController {
-    var dataList: [String] = [
-        "第一阶段:简单使用",
-        "第二阶段:细节控制",
-        "第三阶段:二次封装",
-        "第四阶段:增强封装",
-    ]
-    
+class AlamofireFirstViewController: UIViewController {
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +24,24 @@ class AlamofireUseageViewController: UIViewController {
         let dataRequest = AF.request("https://httpbin.org/get")
         
         /// 2.发送请求: 非范型方法,参数是字典
+        let dataRequest11 = AF.request("https://httpbin.org/get", parameters: ["age": "25"])
         
+        /// 3.发送请求, 范型方法,参数是模型
+        let dataRequest12 = AF.request("https://httpbin.org/get", parameters: HParams(name: "zhou",  age: "25"))
         
+        /// 4.发送URLRequestConvertible,第一个遵从URLRequestConvertible 协议, 直接用URLRequest
+        do {
+            let request = try URLRequest(url: "https://httpbin.org/get?age=25", method: .get)
+            let dataRequest13 = AF.request(request)
+        } catch {
+            
+        }
+        
+        /// 5.发送URLRequestConvertible,第一个遵从URLRequestConvertible 协议, 用遵从协议的UseAPI
+        let userAPI = UserAPI.login(username: "zhou")
+        AF.request(userAPI)
+    
+
         
         // MARK: - ⚠️  响应
         
@@ -106,7 +116,7 @@ class AlamofireUseageViewController: UIViewController {
         }
         
         
-        // MARK: - ⚠️  字典/数组(valid json object) 参数编码
+        // MARK: - ⚠️   参数编码: 字典/数组(valid json object)
         
         // 1. GET请求 url-encode: value只能是简单的类型,参数无嵌套对象,
         // https://httpbin.org/get?name=zhangsan&age=25&city=beijing&gender=male
@@ -168,11 +178,20 @@ class AlamofireUseageViewController: UIViewController {
             }
         }
         
-        // MARK: - ⚠️ Codable模型参数编码
-
-        let para: HParams = HParams(name: "zhou", age: "25", gender: "male")
+        // MARK: - ⚠️ 参数编码: Codable模型参数编码
+        let para: HParams =  HParams(name: "zhou", age: "25", gender: "male")
         let dataRequest5 = AF.request(url, method: .get, parameters: para, encoder: URLEncodedFormParameterEncoder.default, headers: nil, requestModifier: nil)
         dataRequest5.responseString { response in
+            switch response.result {
+            case .success(let res):
+                print("get json编码 后的res:\(res)")
+            case .failure(let error):
+                break
+            }
+        }
+        
+        let dataRequest6 = AF.request(url, method: .post, parameters: para, encoder: JSONParameterEncoder.default, headers: nil, requestModifier: nil)
+        dataRequest6.responseString { response in
             switch response.result {
             case .success(let res):
                 print("post json编码 后的res:\(res)")
@@ -180,9 +199,24 @@ class AlamofireUseageViewController: UIViewController {
                 break
             }
         }
+        
+        
+        // MARK: - ⚠️ 请求修改器
+        AF.request("https://httpbin.org/get") { requst in
+            requst.setValue("12345", forHTTPHeaderField: "token")
+        }.validate().responseString { res in
+            switch res.result {
+            case .success(let data):
+                print("修改器:\(data)")
+            case .failure(let error):
+                print(error)
+            }
+        }
+        // MARK: - ⚠️ 请求拦截器
+        // 全局拦截
+        
     }
 
 }
-
 
 
