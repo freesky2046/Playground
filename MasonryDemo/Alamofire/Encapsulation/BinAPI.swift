@@ -45,6 +45,4 @@ enum HttpBinAPI: APIRouter {
         return nil
     }
     
-   
-    
 }

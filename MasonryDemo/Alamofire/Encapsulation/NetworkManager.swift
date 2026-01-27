@@ -102,21 +102,11 @@ class NetworkManager {
         }
     }
     
-//    // 2. URLRequestConvertible 对象便利方法（不含interceptor，直接调用核心方法）
-//    func sendCodable<T: Codable>(_ convertible: any URLRequestConvertible,
-//                                 decodeType: T.Type,
-//                                 completionHandler: @escaping @Sendable (Result<T, AFError>) -> Void) -> DataRequest {
-//        // 复用核心方法，仅省略interceptor参数（用默认值nil）
-//        return self.sendCodable(convertible,
-//                                decodeType: decodeType,
-//                                interceptor: nil,
-//                                completionHandler: completionHandler)
-//    }
     
     private func handleResponse<T: Codable>(res: AFDataResponse<Data>, decodeType: T.Type, completionHandler: @escaping @Sendable (Result<T, AFError>) -> Void) {
         // 这里再拦截一些代码做一些处理
         // 譬如本地日志,远程上报
-        // 往上不需要抛 AFDataResponse<Data> 这样的对象,而是响应结果Data, Error报上来就好
+        // 往上不需要抛 AFDataResponse<Data> 这样的对象,而是响应结果Result<T, Error>报上来就好
         logResponse(response: res)
         report()
         switch res.result {

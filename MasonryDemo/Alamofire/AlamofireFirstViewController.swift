@@ -224,6 +224,8 @@ class AlamofireFirstViewController: UIViewController {
             }
         }
         
+        
+        
     }
 
 }

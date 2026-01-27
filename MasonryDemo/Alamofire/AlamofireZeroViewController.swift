@@ -13,6 +13,7 @@ class AlamofireZeroViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        print("基础知识")
         
         let url = "https://httpbin.org/get"
         let URL1 = URL(string: url)!
