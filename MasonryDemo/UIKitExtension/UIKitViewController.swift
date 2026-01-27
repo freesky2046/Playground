@@ -1,23 +1,10 @@
-//
-//  HomeViewController.swift
-//  MasonryDemo
-//
-//  Created by 周明 on 2026/1/20.
-//
-
 import UIKit
-import YYText
 import SnapKit
 
-class HomeViewController: UIViewController {
+class UIKitViewController: UIViewController {
     var dataList: [String] = [
-        "YYText",
-        "Alamofire",
-        "Router",
-        "UIKitExtension",
-        "ThirdParty",
-        "Namespace",
-        "UIKit Extension"
+        "基础知识",
+        "当前window和viewcontroller"
     ]
     
     lazy var tableView: UITableView = {
@@ -31,6 +18,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
@@ -40,7 +28,7 @@ class HomeViewController: UIViewController {
 
 }
 
-extension HomeViewController: UITableViewDelegate {
+extension UIKitViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         44.0
     }
@@ -48,24 +36,15 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            let yytext = YYTextController()
-            navigationController?.pushViewController(yytext, animated: true)
-        case 1:
-            let alamofire = AlamofireViewController()
-            navigationController?.pushViewController(alamofire, animated: true)
-        case 2:
-            let router = RouterViewController()
-            navigationController?.pushViewController(router, animated: true)
-        case 6:
-            let kit = UIKitViewController()
-            navigationController?.pushViewController(kit, animated: true)
+            let basic = UIKitBasicViewController()
+            navigationController?.pushViewController(basic, animated: true)
         default:
             break
         }
     }
 }
 
-extension HomeViewController: UITableViewDataSource {
+extension UIKitViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dataList.count
     }
