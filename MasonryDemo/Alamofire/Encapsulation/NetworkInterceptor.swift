@@ -17,7 +17,7 @@ import Alamofire
          
         }
         ///  拼接query
-        if var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), !NetworkConfig.commonParam.isEmpty {
+        if var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), !NetworkConfig.commonQuery.isEmpty {
             let percentEncodedQuery = (urlComponents.percentEncodedQuery.map { $0 + "&" } ?? "") + NetworkConfig.commonQuery
             urlComponents.percentEncodedQuery = percentEncodedQuery
             request.url = urlComponents.url

@@ -9,15 +9,8 @@ import Foundation
 import Alamofire
 
 struct NetworkConfig {
-    
-    static var commonParam: [String: String] {
-        var result: [String: String] = [:]
-        result["platform"] = "iOS"
-        result["app_version"] = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0" // 补充APP版本
-        return result
-    }
-    
-    static var commonQuery: String {
+    // 数组-->二维元组-->数组-->字符串
+    static  var commonQuery: String {
         let parameters = Self.commonParam
         var components: [(String, String)] = []
         for key in parameters.keys.sorted(by: <) {
@@ -27,16 +20,23 @@ struct NetworkConfig {
         }
         return components.map { "\($0)=\($1)" }.joined(separator: "&")
     }
-    
+
     static var commonHeaders: HTTPHeaders {
         return HTTPHeaders(["token": "12345"])
     }
-    
+        
     static var baseURL: String {
-        return "https://httpbin.org/get"
+        return "https://httpbin.org"
     }
     
     static private func escape(_ string: String) -> String {
         string.addingPercentEncoding(withAllowedCharacters: .afURLQueryAllowed) ?? string
+    }
+    
+    static private var commonParam: [String: String] {
+        var result: [String: String] = [:]
+        result["platform"] = "iOS"
+        result["app_version"] = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0" // 补充APP版本
+        return result
     }
 }

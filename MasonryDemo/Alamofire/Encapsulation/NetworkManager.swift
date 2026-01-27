@@ -69,12 +69,14 @@ class NetworkManager {
               headers: HTTPHeaders? = nil,
               interceptor: (any RequestInterceptor)? = nil,
               requestModifier: RequestModifier? = nil,
+              decodeType: T.Type,
               completionHandler: @escaping @Sendable (Result<T, AFError>) -> Void ) -> DataRequest {
         let dataRequest = request(convertible, method: method, parameters: parameters, encoding: encoding, headers: headers, interceptor: interceptor, requestModifier: requestModifier)
         return dataRequest.validate().responseData {[weak self] res in
-            self?.handleResponse(res: res, completionHandler: completionHandler)
+            self?.handleResponse(res: res, decodeType: decodeType,completionHandler: completionHandler)
         }
     }
+    
     
     // 模型参数, urlstring, url
     func sendCoable<T: Codable, Parameters: Encodable & Sendable>(_ convertible: any URLConvertible,
@@ -84,31 +86,34 @@ class NetworkManager {
                                                                   headers: HTTPHeaders? = nil,
                                                                   interceptor: (any RequestInterceptor)? = nil,
                                                                   requestModifier: RequestModifier? = nil,
+                                                                  decodeType: T.Type,
                                                                   completionHandler: @escaping @Sendable (Result<T, AFError>) -> Void ) -> DataRequest {
         let dataRequest = request(convertible, method: method, parameters: parameters, encoder: encoder, interceptor: interceptor, requestModifier: requestModifier)
         return dataRequest.validate().responseData {[weak self] res in
-            self?.handleResponse(res: res, completionHandler: completionHandler)
+            self?.handleResponse(res: res, decodeType: decodeType,completionHandler: completionHandler)
         }
     }
     
     // 1. URLRequestConvertible 对象
-    func sendCodable<T: Codable>(_ convertible: any URLRequestConvertible, interceptor: (any RequestInterceptor)? = nil, completionHandler: @escaping @Sendable (Result<T, AFError>) -> Void) -> DataRequest {
+    func sendCodable<T: Codable>(_ convertible: any URLRequestConvertible, decodeType: T.Type, interceptor: (any RequestInterceptor)? = nil, completionHandler: @escaping @Sendable (Result<T, AFError>) -> Void) -> DataRequest {
         let dataRequest =  request(convertible, interceptor: interceptor)
         return dataRequest.validate().responseData {[weak self] res in
-            self?.handleResponse(res: res, completionHandler: completionHandler)
+            self?.handleResponse(res: res, decodeType: decodeType , completionHandler: completionHandler)
         }
     }
     
-    // 2. URLRequestConvertible 对象便利方法（不含interceptor，直接调用核心方法）
-    func sendCodable<T: Codable>(_ convertible: any URLRequestConvertible,
-                                 completionHandler: @escaping @Sendable (Result<T, AFError>) -> Void) -> DataRequest {
-        // 复用核心方法，仅省略interceptor参数（用默认值nil）
-        return self.sendCodable(convertible,
-                                interceptor: nil,
-                                completionHandler: completionHandler)
-    }
+//    // 2. URLRequestConvertible 对象便利方法（不含interceptor，直接调用核心方法）
+//    func sendCodable<T: Codable>(_ convertible: any URLRequestConvertible,
+//                                 decodeType: T.Type,
+//                                 completionHandler: @escaping @Sendable (Result<T, AFError>) -> Void) -> DataRequest {
+//        // 复用核心方法，仅省略interceptor参数（用默认值nil）
+//        return self.sendCodable(convertible,
+//                                decodeType: decodeType,
+//                                interceptor: nil,
+//                                completionHandler: completionHandler)
+//    }
     
-    private func handleResponse<T: Codable>(res: AFDataResponse<Data>, completionHandler: @escaping @Sendable (Result<T, AFError>) -> Void) {
+    private func handleResponse<T: Codable>(res: AFDataResponse<Data>, decodeType: T.Type, completionHandler: @escaping @Sendable (Result<T, AFError>) -> Void) {
         // 这里再拦截一些代码做一些处理
         // 譬如本地日志,远程上报
         // 往上不需要抛 AFDataResponse<Data> 这样的对象,而是响应结果Data, Error报上来就好
@@ -118,12 +123,13 @@ class NetworkManager {
         case .success(let data):
             let coder = JSONDecoder()
             do  {
-                let jsonData = try coder.decode(T.self, from: data)
+                let jsonData = try coder.decode(decodeType, from: data)
                 completionHandler(.success(jsonData))
             } catch {
                 completionHandler(.failure(AFError.responseSerializationFailed(reason: .inputFileNil)))
             }
         case .failure(let error):
+            print("错误的request:\(res.request?.url?.absoluteString)")
             completionHandler(.failure(error))
         }
     }

@@ -214,6 +214,15 @@ class AlamofireFirstViewController: UIViewController {
         }
         // MARK: - ⚠️ 请求拦截器
         // 全局拦截
+        NetworkManager.shared.sendCodable(HttpBinAPI.get, decodeType: HResponse.self) { result in
+            switch result {
+            case .success(let res):
+                print("全局拦截res:\(res)")
+            case .failure(let failure):
+                let error = failure as? AFError
+                print("全局拦截:\(failure)")
+            }
+        }
         
     }
 
