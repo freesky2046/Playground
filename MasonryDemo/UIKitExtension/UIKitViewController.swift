@@ -38,6 +38,9 @@ extension UIKitViewController: UITableViewDelegate {
         case 0:
             let basic = UIKitBasicViewController()
             navigationController?.pushViewController(basic, animated: true)
+        case 1:
+            let window = UIKitWindowViewController()
+            navigationController?.pushViewController(window, animated: true)
         default:
             break
         }

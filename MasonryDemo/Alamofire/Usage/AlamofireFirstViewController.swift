@@ -34,7 +34,7 @@ class AlamofireFirstViewController: UIViewController {
             let request = try URLRequest(url: "https://httpbin.org/get?age=25", method: .get)
             let dataRequest13 = AF.request(request)
         } catch {
-            
+            print ("\(error)")
         }
         
         /// 5.发送URLRequestConvertible,第一个遵从URLRequestConvertible 协议, 用遵从协议的UseAPI
@@ -223,8 +223,7 @@ class AlamofireFirstViewController: UIViewController {
                 print("全局拦截:\(failure)")
             }
         }
-        
-        
+    
         
     }
 

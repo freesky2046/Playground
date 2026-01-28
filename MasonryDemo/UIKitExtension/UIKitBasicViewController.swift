@@ -25,11 +25,11 @@ class UIKitBasicViewController: UIViewController {
         print("map转换为可选值类型:\(items4)")
     
         // 2. flatmap:  用在拆包的时候优选 compactMap
-        /// 作用1: 空过滤,转换,解包
+        /// 作用1: ,转换,解包,空过滤
         /// 作用2: 拍平多维数组 2纬-〉1纬
         let item5 = [1, 2, 3]
         
-        let item6 = item5.flatMap({ String($0) }) // 转换的是非可选类型,和map效果一样
+        let item6 = item5.flatMap{ String($0) } // 转换的是非可选类型,和map效果一样
         print("转换后为非可选值类型,效果和map一样:\(item6)")
         let item7 = [1, 2, 3, nil]
         let item8 = item7.flatMap({$0})
@@ -45,28 +45,25 @@ class UIKitBasicViewController: UIViewController {
         let res =  ii.flatMap({ _ in 2 })
         print("验证是先过滤还是后过滤\(res)")
         
-        // 3.compactMap: 空过滤,转换,解包
-        let item9 = item8.compactMap({$0})
+        // 3.compactMap: 转换,解包,空过滤
+        let item555 = [1, 2, 3, nil]
+        let item9 = item5.compactMap({  $0 + 1})
         print("compactMap转换后为可选类型,拆包再过滤:\(item9)")
+        
+        let item88 = ["1", "2", "3"]
+        let item99 = item88.compactMap({$0})
+        print("compactMap转换后为可选类型,拆包再过滤:\(item99)")
     
         // MARK: - 用在可选值上的高阶函数
         let value: Int? = nil
         // nil就直接返回nil,不会参与转换
-        let result = value.flatMap({_ in 2 })
-        print("map用于可选值: \(result)")
+        let result = value.flatMap{ _ in 2 }
+        print("flatMap用于可选值: \(result)")
         
-        let value2: Int? = 2
-        // nil就直接返回nil,不会参与转换
-        let result2 = value2.flatMap({_ in 2 })
-        print("map用于可选值: \(result2)")
-        
-        
-        
-        
-        
-       
-        
-        
+        let v: String? = "10"
+        let re = v.map({_ in "name"})
+        print("map:\(re)")
+
         
     }
     

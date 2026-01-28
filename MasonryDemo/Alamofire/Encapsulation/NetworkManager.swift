@@ -59,9 +59,10 @@ class NetworkManager {
         return request
     }
     
-    
+      
     //  MARK: - ⚠️  请求后自己解析响应,只将Data,Error往上抛给业务层, 同时可以拦截做一些额外操作
     // 字典参数, urlstring,url
+    @discardableResult
     func sendCodable<T: Codable>(_ convertible: any URLConvertible,
               method: HTTPMethod = .get,
               parameters: Parameters? = nil,
@@ -116,7 +117,7 @@ class NetworkManager {
                 let jsonData = try coder.decode(decodeType, from: data)
                 completionHandler(.success(jsonData))
             } catch {
-                completionHandler(.failure(AFError.responseSerializationFailed(reason: .inputFileNil)))
+                completionHandler(.failure(AFError.responseSerializationFailed(reason: .decodingFailed(error: error))))
             }
         case .failure(let error):
             print("错误的request:\(res.request?.url?.absoluteString)")
