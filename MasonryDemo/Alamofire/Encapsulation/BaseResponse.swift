@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct BaseResponse<T>: Codable {
+struct BaseResponse<T: Codable>: Codable {
     var code: Int?
     var msg: String
+    var data: T?
 }

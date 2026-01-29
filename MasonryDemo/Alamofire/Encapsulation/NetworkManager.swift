@@ -113,14 +113,16 @@ class NetworkManager {
         switch res.result {
         case .success(let data):
             let coder = JSONDecoder()
+            /// 下划线自动转小驼峰
+            coder.keyDecodingStrategy = .convertFromSnakeCase
             do  {
                 let jsonData = try coder.decode(decodeType, from: data)
                 completionHandler(.success(jsonData))
             } catch {
+                /// 这里的错误是decode抛出来的 我只知道是因为解码导致的 ,具体的错误没办法定义 ,因此定义为any Error
                 completionHandler(.failure(AFError.responseSerializationFailed(reason: .decodingFailed(error: error))))
             }
         case .failure(let error):
-            print("错误的request:\(res.request?.url?.absoluteString)")
             completionHandler(.failure(error))
         }
     }

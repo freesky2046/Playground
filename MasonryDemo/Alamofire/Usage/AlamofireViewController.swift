@@ -45,8 +45,8 @@ extension AlamofireViewController: UITableViewDelegate {
             let first = AlamofireFirstViewController()
             navigationController?.pushViewController(first, animated: true)
         case 2:
-            let useage = AlamofireFirstViewController()
-            navigationController?.pushViewController(useage, animated: true)
+            let second = AlamofireSecondViewController()
+            navigationController?.pushViewController(second, animated: true)
         default:
             break
         }
