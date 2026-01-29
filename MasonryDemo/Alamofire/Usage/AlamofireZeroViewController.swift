@@ -130,7 +130,7 @@ class AlamofireZeroViewController: UIViewController {
     
     // throw + throws 函数自身生成并抛出错误，自己不处理,向上传递
     func request(url: String) throws {
-        guard let URL =  URL(string: url) else {
+        guard let URL =  URL(string: url), URL.host?.isEmpty == false, URL.scheme?.isEmpty == false  else {
             throw WebError.invalidURL // 抛出错误后下面的代码就不会执行了
         }
         NetworkManager.shared.sendCodable(URL, decodeType: HResponse.self) { result in
