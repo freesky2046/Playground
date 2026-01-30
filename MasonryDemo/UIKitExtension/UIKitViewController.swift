@@ -4,7 +4,8 @@ import SnapKit
 class UIKitViewController: UIViewController {
     var dataList: [String] = [
         "基础知识",
-        "当前window和viewcontroller"
+        "当前window和viewcontroller",
+        "UIImage"
     ]
     
     lazy var tableView: UITableView = {

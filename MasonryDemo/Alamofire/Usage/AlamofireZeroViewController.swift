@@ -126,6 +126,15 @@ class AlamofireZeroViewController: UIViewController {
         } catch {
             print("\(error)")
         }
+        
+        // MARK: - ⚠️ 生成URL的时候query的value不合法的字符不编码
+        let url678 = "http://www.baidu.com?a=粥"
+        /// 某些版本会返回nil
+        if let URL678: URL = URL(string: url678) {
+            print(URL678.absoluteString)
+        }
+        
+    
     }
     
     // throw + throws 函数自身生成并抛出错误，自己不处理,向上传递

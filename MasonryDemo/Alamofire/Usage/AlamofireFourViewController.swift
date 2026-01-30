@@ -17,7 +17,7 @@ class AlamofireFourViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
-        print("更多功能")
+        print("十大增强")
         
     }
 

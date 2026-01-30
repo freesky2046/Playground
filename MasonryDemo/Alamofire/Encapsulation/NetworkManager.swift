@@ -15,10 +15,12 @@ class NetworkManager {
     
     // 配置Session并持有强引用
     let session: Session
+    let cacheManager = CacheManager.shared
     
     private init() {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 15.0
+        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
         let interceptor = NetworkInterceptor()
         // 初始化Session并强引用持有
         session = Session(configuration: configuration, interceptor: interceptor)
@@ -71,10 +73,11 @@ class NetworkManager {
               interceptor: (any RequestInterceptor)? = nil,
               requestModifier: RequestModifier? = nil,
               decodeType: T.Type,
+              needCache: Bool = false,
               completionHandler: @escaping @Sendable (Result<T, AFError>) -> Void ) -> DataRequest {
         let dataRequest = request(convertible, method: method, parameters: parameters, encoding: encoding, headers: headers, interceptor: interceptor, requestModifier: requestModifier)
         return dataRequest.validate().responseData {[weak self] res in
-            self?.handleResponse(res: res, decodeType: decodeType,completionHandler: completionHandler)
+            self?.handleResponse(res: res, decodeType: decodeType, needCache: needCache,completionHandler: completionHandler)
         }
     }
     
@@ -88,42 +91,67 @@ class NetworkManager {
                                                                   interceptor: (any RequestInterceptor)? = nil,
                                                                   requestModifier: RequestModifier? = nil,
                                                                   decodeType: T.Type,
+                                                                  needCache: Bool = false,
                                                                   completionHandler: @escaping @Sendable (Result<T, AFError>) -> Void ) -> DataRequest {
         let dataRequest = request(convertible, method: method, parameters: parameters, encoder: encoder, interceptor: interceptor, requestModifier: requestModifier)
         return dataRequest.validate().responseData {[weak self] res in
-            self?.handleResponse(res: res, decodeType: decodeType,completionHandler: completionHandler)
+            self?.handleResponse(res: res, decodeType: decodeType, needCache: needCache, completionHandler: completionHandler)
         }
     }
     
     // 1. URLRequestConvertible 对象
-    func sendCodable<T: Codable>(_ convertible: any URLRequestConvertible, decodeType: T.Type, interceptor: (any RequestInterceptor)? = nil, completionHandler: @escaping @Sendable (Result<T, AFError>) -> Void) -> DataRequest {
+    func sendCodable<T: Codable>(_ convertible: any URLRequestConvertible, decodeType: T.Type, interceptor: (any RequestInterceptor)? = nil, needCache: Bool = false,completionHandler: @escaping @Sendable (Result<T, AFError>) -> Void) -> DataRequest {
         let dataRequest =  request(convertible, interceptor: interceptor)
         return dataRequest.validate().responseData {[weak self] res in
-            self?.handleResponse(res: res, decodeType: decodeType , completionHandler: completionHandler)
+            self?.handleResponse(res: res, decodeType: decodeType, needCache: needCache, completionHandler: completionHandler)
         }
     }
     
     
-    private func handleResponse<T: Codable>(res: AFDataResponse<Data>, decodeType: T.Type, completionHandler: @escaping @Sendable (Result<T, AFError>) -> Void) {
-        // 这里再拦截一些代码做一些处理
-        // 譬如本地日志,远程上报
-        // 往上不需要抛 AFDataResponse<Data> 这样的对象,而是响应结果Result<T, Error>报上来就好
+    private func handleResponse<T: Codable>(
+        res: AFDataResponse<Data>,
+        decodeType: T.Type,
+        needCache: Bool,
+        completionHandler: @escaping @Sendable (Result<T, AFError>) -> Void
+    ) {
+        // 公共前置处理：日志和上报
         logResponse(response: res)
         report()
+        
+        // 核心逻辑：优先处理成功，失败时回退到缓存
         switch res.result {
         case .success(let data):
-            let coder = JSONDecoder()
-            /// 下划线自动转小驼峰
-            coder.keyDecodingStrategy = .convertFromSnakeCase
-            do  {
-                let jsonData = try coder.decode(decodeType, from: data)
-                completionHandler(.success(jsonData))
-            } catch {
-                /// 这里的错误是decode抛出来的 我只知道是因为解码导致的 ,具体的错误没办法定义 ,因此定义为any Error
-                completionHandler(.failure(AFError.responseSerializationFailed(reason: .decodingFailed(error: error))))
+            // 成功时解码并缓存
+            decodeAndComplete(data: data, decodeType: decodeType, completion: completionHandler)
+            // 存储缓存（如果有请求和响应）
+            if let request = res.request, let response = res.response {
+                cacheManager.store(request: request, response: response, data: data, maxCacheAge: 5 * 24 * 60 * 60)
             }
         case .failure(let error):
-            completionHandler(.failure(error))
+            // 失败时尝试读取缓存（仅当 needCache 为 true）
+            if needCache, let request = res.request, let cachedData = cacheManager.cachedData(request: request) {
+                // 从缓存解码并完成
+                decodeAndComplete(data: cachedData, decodeType: decodeType, completion: completionHandler)
+            } else {
+                // 无缓存或不需要缓存，直接返回失败
+                completionHandler(.failure(error))
+            }
+        }
+    }
+
+    // 提取解码逻辑为私有方法，避免重复
+    private func decodeAndComplete<T: Codable>(
+        data: Data,
+        decodeType: T.Type,
+        completion: @escaping @Sendable (Result<T, AFError>) -> Void
+    ) {
+        let coder = JSONDecoder()
+        coder.keyDecodingStrategy = .convertFromSnakeCase
+        do {
+            let jsonData = try coder.decode(decodeType, from: data)
+            completion(.success(jsonData))
+        } catch {
+            completion(.failure(AFError.responseSerializationFailed(reason: .decodingFailed(error: error))))
         }
     }
 }

@@ -8,8 +8,9 @@
 import Foundation
 import Alamofire
 
-enum NetworkError {
-    case afError(error: AFError)
-    case wrapperError // 返回的数据类型不是 BaseResponse<T: Codable> 类型
-    case unkownError
+enum NetworkError: Error {
+    case networkError(AFError)
+    case serverError(Int, String)
+    case businessError(Int, String)
+    case decodingError(Error)
 }
