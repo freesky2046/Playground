@@ -9,15 +9,9 @@ import UIKit
 import YYText
 import SnapKit
 
-class HomeViewController: UIViewController {
+class CacheViewController: UIViewController {
     var dataList: [String] = [
-        "YYText",
-        "Alamofire",
-        "Router",
-        "ThirdParty",
-        "Namespace",
-        "UIKitExtension",
-        "YYCache"
+        "Basic"
     ]
     
     lazy var tableView: UITableView = {
@@ -31,6 +25,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
@@ -40,7 +35,7 @@ class HomeViewController: UIViewController {
 
 }
 
-extension HomeViewController: UITableViewDelegate {
+extension CacheViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         44.0
     }
@@ -49,28 +44,16 @@ extension HomeViewController: UITableViewDelegate {
         let title = dataList[indexPath.row]
         
         switch title {
-        case "YYText":
-            let yytext = YYTextController()
-            navigationController?.pushViewController(yytext, animated: true)
-        case "Alamofire":
-            let alamofire = AlamofireViewController()
-            navigationController?.pushViewController(alamofire, animated: true)
-        case "Router":
-            let router = RouterViewController()
-            navigationController?.pushViewController(router, animated: true)
-        case "UIKitExtension":
-            let kit = UIKitViewController()
-            navigationController?.pushViewController(kit, animated: true)
-        case "YYCache":
-            let cache = CacheViewController()
-            navigationController?.pushViewController(cache, animated: true)
+        case "Basic":
+            let basic = CacheBasicViewController()
+            navigationController?.pushViewController(basic, animated: true)
         default:
             break
         }
     }
 }
 
-extension HomeViewController: UITableViewDataSource {
+extension CacheViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dataList.count
     }

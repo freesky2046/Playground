@@ -63,7 +63,18 @@ class UIKitBasicViewController: UIViewController {
         let v: String? = "10"
         let re = v.map({_ in "name"})
         print("map:\(re)")
+        
+        // MARK: - 随机数
+       let num = Int(arc4random_uniform(255))
+       print("随机数:\(num)")
 
+       // MARK: - 时间戳
+        
+       let timestamp1 = Date.timeIntervalSinceReferenceDate
+       print("距离2001年:\(timestamp1)")
+       let timestamp2 = Date.timeIntervalBetween1970AndReferenceDate
+       print("2001年和1970年:\(timestamp2)")
+       let timestamp3 = Date().timeIntervalSince1970
         
     }
     

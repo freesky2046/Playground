@@ -41,28 +41,16 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
-				UserInfo/UserInfo.swift,
 			);
 			target = 68C3BF162F187C990068183F /* MasonryDemo */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		68DD13BD2F2C52A5008F63EB /* Exceptions for "MasonryDemo" folder in "Copy Bundle Resources" phase from "MasonryDemo" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 68C3BF152F187C990068183F /* Resources */;
-			membershipExceptions = (
-				UserInfo/UserInfo.swift,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		68C3BF192F187C990068183F /* MasonryDemo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				68C3BF3F2F187C9B0068183F /* Exceptions for "MasonryDemo" folder in "MasonryDemo" target */,
-				68DD13BD2F2C52A5008F63EB /* Exceptions for "MasonryDemo" folder in "Copy Bundle Resources" phase from "MasonryDemo" target */,
 			);
 			path = MasonryDemo;
 			sourceTree = "<group>";

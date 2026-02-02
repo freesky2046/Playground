@@ -134,6 +134,7 @@ public struct HTTPHeaders: Equatable, Hashable, Sendable {
     /// This representation does not preserve the current order of the instance.
     public var dictionary: [String: String] {
         let namesAndValues = headers.map { ($0.name, $0.value) }
+
         return Dictionary(namesAndValues, uniquingKeysWith: { _, last in last })
     }
 }

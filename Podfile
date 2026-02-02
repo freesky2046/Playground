@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '13.0'
 
 target 'MasonryDemo' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -7,6 +7,7 @@ target 'MasonryDemo' do
   pod 'SnapKit', '~> 5.7'
   pod 'YYText'
   pod 'Alamofire'
+  pod 'YYCache'
   # Pods for MasonryDemo
 
   post_install do |installer|
