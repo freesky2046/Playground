@@ -124,7 +124,18 @@ static UIApplication *_YYSharedApplication() {
     BOOL retry = NO;
     BOOL stmtFinalized = NO;
     
-    if (_dbStmtCache) CFRelease(_dbStmtCache);
+    if (_dbStmtCache) {
+          CFIndex size = CFDictionaryGetCount(_dbStmtCache);
+          CFTypeRef *valuesRef = (CFTypeRef *)malloc(size * sizeof(CFTypeRef));
+          CFDictionaryGetKeysAndValues(_dbStmtCache, NULL, (const void **)valuesRef);
+          const sqlite3_stmt **stmts = (const sqlite3_stmt **)valuesRef;
+          for (CFIndex i = 0; i < size; i ++) {
+              sqlite3_stmt *stmt = stmts[i];
+              sqlite3_finalize(stmt);
+          }
+          free(valuesRef);
+          CFRelease(_dbStmtCache);
+      }
     _dbStmtCache = NULL;
     
     do {
@@ -135,7 +146,9 @@ static UIApplication *_YYSharedApplication() {
                 stmtFinalized = YES;
                 sqlite3_stmt *stmt;
                 while ((stmt = sqlite3_next_stmt(_db, nil)) != 0) {
-                    sqlite3_finalize(stmt);
+                    if (stmt) {
+                        sqlite3_finalize(stmt);
+                    }
                     retry = YES;
                 }
             }

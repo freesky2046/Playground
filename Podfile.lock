@@ -1,11 +1,13 @@
 PODS:
   - Alamofire (5.10.2)
+  - Kingfisher (8.3.2)
   - SnapKit (5.7.1)
   - YYCache (1.0.4)
   - YYText (1.0.7)
 
 DEPENDENCIES:
   - Alamofire
+  - Kingfisher
   - SnapKit (~> 5.7)
   - YYCache
   - YYText
@@ -13,16 +15,18 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Kingfisher
     - SnapKit
     - YYCache
     - YYText
 
 SPEC CHECKSUMS:
   Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
+  Kingfisher: 0621d0ac0c78fecb19f6dc5303bde2b52abaf2f5
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: e1079c74f01eb97f2929fbcecc31b6c06b3180c2
+PODFILE CHECKSUM: 7e284fd6825cb8173ee4ebaefd141265340d96fa
 
 COCOAPODS: 1.16.2

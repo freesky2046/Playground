@@ -135,15 +135,19 @@ class CacheBasicViewController: UIViewController {
         let file2 = cachesURL11.appendingPathComponent("12")
         let fileeee = file2.appendingPathExtension("jpg")
         print("添加后缀后:file2:\(fileeee)")
-        
         let file3 = cachesURL11.appendingPathComponent("125.jpg")
         let fileggg = file3.deletingPathExtension()
         print("删除后缀后:file2:\(fileggg)")
         
-        
-
+        // 时间统计
+        let time1 = CACurrentMediaTime()
+        var result: CGFloat = 0.0
+        for i in 1...100000 {
+            result += sqrt(Double(i))
+        }
+        let time2 = CACurrentMediaTime()
+        print(time2 - time1)
     }
-    
-
-
 }
+
+

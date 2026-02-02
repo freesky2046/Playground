@@ -11,7 +11,8 @@ import SnapKit
 
 class CacheViewController: UIViewController {
     var dataList: [String] = [
-        "Basic"
+        "Basic",
+        "Usage"
     ]
     
     lazy var tableView: UITableView = {
@@ -47,6 +48,9 @@ extension CacheViewController: UITableViewDelegate {
         case "Basic":
             let basic = CacheBasicViewController()
             navigationController?.pushViewController(basic, animated: true)
+        case "Usage":
+            let usage = CacheUsageViewController()
+            navigationController?.pushViewController(usage, animated: true)
         default:
             break
         }
