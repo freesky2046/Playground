@@ -87,13 +87,20 @@ class CacheUsageViewController: UIViewController {
         guard let cache33 : YYCache = YYCache(name: "FileCache") else {
             return
         }
-   
-        cache33.memoryCache.costLimit = 0 //  
+        cache33.memoryCache.costLimit = 0 //  最大空间 总字节数
         cache33.memoryCache.countLimit = 0 // 最大数量
         cache33.memoryCache.ageLimit = 0 //  最长存活周期
         cache33.setObject(1 as NSNumber, forKey: "string")
+    
+        // MARK: - ⚠️ 设置内存限制
+        guard let cache44 : YYCache = YYCache(name: "FileCache") else {
+            return
+        }
+        cache44.memoryCache.costLimit = 1024 * 10  //  最大空间 10MB
+        cache33.memoryCache.countLimit = 100 // 最大数量
+        cache33.memoryCache.ageLimit = 0 //  最长存活周期
+        cache33.setObject(1 as NSNumber, forKey: "string")
         
-        //
         
     }
 }

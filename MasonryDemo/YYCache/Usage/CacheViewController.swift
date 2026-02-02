@@ -43,7 +43,6 @@ extension CacheViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let title = dataList[indexPath.row]
-        
         switch title {
         case "Basic":
             let basic = CacheBasicViewController()

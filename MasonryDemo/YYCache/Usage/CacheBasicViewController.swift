@@ -139,6 +139,7 @@ class CacheBasicViewController: UIViewController {
         let fileggg = file3.deletingPathExtension()
         print("删除后缀后:file2:\(fileggg)")
         
+        // MARK: - ⚠️ 时间统计
         // 时间统计
         let time1 = CACurrentMediaTime()
         var result: CGFloat = 0.0
@@ -147,6 +148,13 @@ class CacheBasicViewController: UIViewController {
         }
         let time2 = CACurrentMediaTime()
         print(time2 - time1)
+        
+        
+        PerformanceMeasurer.measureAndPrint("循环") {
+            for i in 1...100000 {
+                result += sqrt(Double(i))
+            }
+        }
     }
 }
 
