@@ -31,7 +31,7 @@ class CacheBasicViewController: UIViewController {
          
 
         /// ⚠️ Library 和Document是根目录下的文件夹, Caches在Library 目录下,  Caches 和 Documents不平级
-        ///
+    
         
         // MARK: - ⚠️ 创建目录
         // 步骤1: 新创建一个完整的路径URL
@@ -149,12 +149,54 @@ class CacheBasicViewController: UIViewController {
         let time2 = CACurrentMediaTime()
         print(time2 - time1)
         
-        
+    
         PerformanceMeasurer.measureAndPrint("循环") {
             for i in 1...100000 {
                 result += sqrt(Double(i))
             }
         }
+        
+        // MARK: - ⚠️ Data读写
+        // 父目录一定要存在, 本身路径下是否有内容不重要,同名会覆盖
+        let cachesURL12 = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+        guard let imageData = UIImage(named: "img")?.pngData() else {
+            return
+        }
+        
+        let destURL11 = cachesURL12.appendingPathComponent("dd.png")
+        do {
+            try imageData.write(to: destURL11)
+        } catch {
+            print("写入错误:\(error)")
+        }
+        
+        guard let readImageData =  try? Data(contentsOf: destURL11) else {
+            return
+        }
+        print(readImageData.count)
+        
+    
+        let queue = DispatchQueue(label: "com.simplecache.queue", attributes: .concurrent)
+        print("执行前:\(1)")
+        queue.sync {
+            for i in 1...100 {
+                print("1:\(Thread.current)")
+            }
+        }
+        print("执行前:\(2)")
+        queue.sync {
+            for i in 1...100 {
+                print("2:\(Thread.current)")
+            }
+        }
+        print("执行前:\(3)")
+        queue.sync {
+            for i in 1...100 {
+                print("3:\(Thread.current)")
+            }
+        }
+        
+        
     }
 }
 

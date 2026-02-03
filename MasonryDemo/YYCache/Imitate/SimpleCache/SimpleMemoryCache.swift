@@ -8,7 +8,8 @@
 import Foundation
 
 class SimpleMemoryCache {
-    var totalCostLimit: Int {
+    
+    var totalCostLimit: Int  {
         get {
             cache.totalCostLimit
         }
@@ -32,7 +33,8 @@ class SimpleMemoryCache {
     init(name: String) {
         self.name = name
         cache = NSCache()
-        
+        totalCostLimit = 50 * 1024 * 1024
+        countLimit = 1000
     }
     
     func setObject(object: any Codable, for key: String) {
@@ -47,8 +49,19 @@ class SimpleMemoryCache {
         }
     }
     
+    func object<T: Codable>(for key: String, as type: T.Type) -> T? {
+        if let data = cache.object(forKey: key as NSString) as? Data {
+            return try? JSONDecoder().decode(T.self, from: data)
+        }
+        return nil
+    }
+    
     func remove(object: any Codable, for key: String) {
         cache.removeObject(forKey: key as NSString)
+    }
+    
+    func removeAllObject() {
+        cache.removeAllObjects()
     }
     
 }

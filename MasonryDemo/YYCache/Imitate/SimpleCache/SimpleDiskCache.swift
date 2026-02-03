@@ -30,7 +30,7 @@ class SimpleDiskCache {
     }
     
     func object<T: Codable>(for key: String, as type: T.Type) -> T? {
-        let filePath = (self.path as NSString).appendingPathComponent(key)
+        let filePath = (self.path as NSString).appendingPathComponent(key.md5)
         if let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) {
             if let object = try? JSONDecoder().decode(T.self, from: data) {
                 return object
@@ -40,7 +40,18 @@ class SimpleDiskCache {
     }
     
     func remove(object: any Codable, for key: String) {
-        let absoluteKey = (self.path as NSString).appendingPathComponent(key.md5)
-        try? FileManager.default.removeItem(atPath: absoluteKey)
+        let key = (self.path as NSString).appendingPathComponent(key.md5)
+        try? FileManager.default.removeItem(atPath: key)
+    }
+    
+    func removeAllObject() {
+        do {
+            try FileManager.default.removeItem(atPath: path)
+            // 注意 还得重新创建一个目录
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            print("err:\(error)")
+        }
+      
     }
 }
