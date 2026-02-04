@@ -15,7 +15,6 @@ class ConcurrentQueueCounter {
         queue.async(flags: .barrier) {
             self.num += 1
         }
-
     }
     
     func minus() {

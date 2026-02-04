@@ -9,12 +9,9 @@ import UIKit
 import YYText
 import SnapKit
 
-class CacheViewController: UIViewController {
+class KingfisherViewController: UIViewController {
     var dataList: [String] = [
         "Basic",
-        "Usage",
-        "Imitate",
-        "Unsafe"
     ]
     
     lazy var tableView: UITableView = {
@@ -28,7 +25,7 @@ class CacheViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = .white
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
@@ -38,33 +35,25 @@ class CacheViewController: UIViewController {
 
 }
 
-extension CacheViewController: UITableViewDelegate {
+extension KingfisherViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         44.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let title = dataList[indexPath.row]
+        
         switch title {
         case "Basic":
-            let basic = CacheBasicViewController()
+            let basic = KingfisherBasicViewController()
             navigationController?.pushViewController(basic, animated: true)
-        case "Usage":
-            let usage = CacheUsageViewController()
-            navigationController?.pushViewController(usage, animated: true)
-        case "Imitate":
-            let imitate = CacheImitateViewController()
-            navigationController?.pushViewController(imitate, animated: true)
-        case "Unsafe":
-            let unsafe = ThreadUnsafeDemoViewController()
-            navigationController?.pushViewController(unsafe, animated: true)
         default:
             break
         }
     }
 }
 
-extension CacheViewController: UITableViewDataSource {
+extension KingfisherViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dataList.count
     }

@@ -8,7 +8,7 @@ target 'MasonryDemo' do
   pod 'YYText'
   pod 'Alamofire'
   pod 'YYCache'
-  pod 'YYCache'
+  pod 'Kingfisher'
   # Pods for MasonryDemo
 
   post_install do |installer|
