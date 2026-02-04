@@ -9,16 +9,9 @@ import UIKit
 import YYText
 import SnapKit
 
-class HomeViewController: UIViewController {
+class BasicKnowledgeViewController: UIViewController {
     var dataList: [String] = [
-        "YYText",
-        "Alamofire",
-        "Router",
-        "ThirdParty",
-        "Namespace",
-        "UIKitExtension",
-        "YYCache",
-        "BaiscKnowledge"
+        "Queue",
     ]
     
     lazy var tableView: UITableView = {
@@ -41,7 +34,7 @@ class HomeViewController: UIViewController {
 
 }
 
-extension HomeViewController: UITableViewDelegate {
+extension BasicKnowledgeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         44.0
     }
@@ -50,31 +43,16 @@ extension HomeViewController: UITableViewDelegate {
         let title = dataList[indexPath.row]
         
         switch title {
-        case "YYText":
-            let yytext = YYTextController()
-            navigationController?.pushViewController(yytext, animated: true)
-        case "Alamofire":
-            let alamofire = AlamofireViewController()
-            navigationController?.pushViewController(alamofire, animated: true)
-        case "Router":
-            let router = RouterViewController()
-            navigationController?.pushViewController(router, animated: true)
-        case "UIKitExtension":
-            let kit = UIKitViewController()
-            navigationController?.pushViewController(kit, animated: true)
-        case "YYCache":
-            let cache = CacheViewController()
-            navigationController?.pushViewController(cache, animated: true)
-        case "BaiscKnowledge":
-            let basic = BasicKnowledgeViewController()
-            navigationController?.pushViewController(basic, animated: true)
+        case "Queue":
+            let queue = QueueViewController()
+            navigationController?.pushViewController(queue, animated: true)
         default:
             break
         }
     }
 }
 
-extension HomeViewController: UITableViewDataSource {
+extension BasicKnowledgeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dataList.count
     }

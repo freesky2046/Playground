@@ -21,14 +21,12 @@ class CacheImitateViewController: UIViewController {
         // 字符串的字节数, 一个json数据大概是几百字节到1000字节
         print(json?.utf8.count)
         
-        
         let cache = SimpleCache(name: "NetworkJsonCache")
         let decoder = JSONDecoder()
         let res = try? decoder.decode(SimpleResponse.self, from: jsonData)
         cache.setObject(object: res, for: "home", cost: jsonData.count)
         let simple = cache.object(for: "home", as: SimpleResponse.self)
-        print(simple?.data?.name)
-        
+        print("读取成功:\(simple)")
         
         cache.removeAllObject()
         

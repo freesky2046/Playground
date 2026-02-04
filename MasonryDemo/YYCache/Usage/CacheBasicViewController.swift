@@ -10,7 +10,7 @@ import YYCache
 
 
 class CacheBasicViewController: UIViewController {
-
+    let queue = DispatchQueue(label: "com.serial.queue")
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -175,28 +175,51 @@ class CacheBasicViewController: UIViewController {
         }
         print(readImageData.count)
         
+        // MARK: - ⚠️ 并行 + 同步
+        // 1.主线程同步提交并行队列
+//        syncCommitCourrent()
+        
+        // 2.非主线程同步提交并行队列
+
+        
+        let thread3 = Thread(target: self, selector: #selector(performTask2), object: nil)
+        thread3.start()
+        let thread4 = Thread(target: self, selector: #selector(performTask2), object: nil)
+        thread4.start()
+        let thread5 = Thread(target: self, selector: #selector(performTask2), object: nil)
+        thread5.start()
     
-        let queue = DispatchQueue(label: "com.simplecache.queue", attributes: .concurrent)
+    }
+    
+    func syncCommitCourrent() {
+        let queue = DispatchQueue(label: "com.corrent.queue", attributes: .concurrent)
+        print("执行前:\(Thread.current)")
         print("执行前:\(1)")
         queue.sync {
-            for i in 1...100 {
-                print("1:\(Thread.current)")
-            }
+            print("第一个任务当前线程开始:\(Thread.current)")
+            Thread.sleep(forTimeInterval: 1.0)
+            print("第一个任务当前线程结束:\(Thread.current)")
         }
-        print("执行前:\(2)")
+    }
+    
+    func syncCommitSerial() {
+    
+        print("提交任务的线程:\(Thread.current)")
         queue.sync {
-            for i in 1...100 {
-                print("2:\(Thread.current)")
+            print("第一个任务当前线程开始:\(Thread.current)")
+            for i in 1...100000 {
+                sqrt(Double(i))
             }
+            print("第一个任务当前线程结束:\(Thread.current)")
         }
-        print("执行前:\(3)")
-        queue.sync {
-            for i in 1...100 {
-                print("3:\(Thread.current)")
-            }
-        }
-        
-        
+    }
+    
+    @objc func performTask() {
+        syncCommitSerial()
+    }
+    
+    @objc func performTask2() {
+        syncCommitSerial()
     }
 }
 
