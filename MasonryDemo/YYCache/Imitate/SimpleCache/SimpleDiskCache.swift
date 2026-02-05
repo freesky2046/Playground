@@ -10,6 +10,9 @@ import Foundation
 class SimpleDiskCache {
     private(set) var path: String
     
+    // 使用 Serial Queue 保证文件 IO 的线程安全
+    private let queue = DispatchQueue(label: "com.masonrydemo.simplecache.disk", qos: .default)
+    
     // MARK: - Limits
     /// 最大缓存数量限制 (默认无限制)
     var countLimit: Int = Int.max
@@ -24,65 +27,95 @@ class SimpleDiskCache {
         try? FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
     }
     
-    /// 这里实际上是一个文件夹下创建多个文件吧
-    func setObject(object: any Codable, for key: String) throws {
-        // 确保缓存目录存在
-        var isDirectory: ObjCBool = false
-        if !FileManager.default.fileExists(atPath: self.path, isDirectory: &isDirectory) || !isDirectory.boolValue {
+    /// 异步写入对象
+    /// - Parameters:
+    ///   - object: 要存储的对象
+    ///   - key: 键
+    ///   - completion: 完成回调 (Result<Void, Error>)
+    func setObject(object: any Codable, for key: String, completion: ((Result<Void, Error>) -> Void)? = nil) {
+        // 使用 async 不阻塞调用线程
+        queue.async {
             do {
-                try FileManager.default.createDirectory(atPath: self.path, withIntermediateDirectories: true, attributes: nil)
-            } catch {
-                throw SimpleCacheError.createDirectory(error: error)
-            }
-        }
-        
-        // 将对象转换为Data并存储
-        var data: Data?
-        do {
-            try  data = JSONEncoder().encode(object)
-        } catch {
-            throw SimpleCacheError.encodeError(error: error)
-        }
-        
-        if let data {
-            let filePath = (self.path as NSString).appendingPathComponent(key.md5)
-            do {
-                try data.write(to: URL(fileURLWithPath: filePath))
-                // 写入成功后，进行 LRU 清理
-                PerformanceMeasurer.measureAndPrint("写入") {
-                    trimRecursively()
+                // 1. 确保缓存目录存在
+                var isDirectory: ObjCBool = false
+                if !FileManager.default.fileExists(atPath: self.path, isDirectory: &isDirectory) || !isDirectory.boolValue {
+                    do {
+                        try FileManager.default.createDirectory(atPath: self.path, withIntermediateDirectories: true, attributes: nil)
+                    } catch {
+                        throw SimpleCacheError.diskStorageFailed(reason: "Create directory failed", underlying: error)
+                    }
+                }
+                
+                // 2. 编码
+                let data: Data
+                do {
+                    data = try JSONEncoder().encode(object)
+                } catch {
+                    throw SimpleCacheError.serializationFailed(reason: "Encode failed", underlying: error)
+                }
+                
+                // 3. 写入文件
+                let filePath = (self.path as NSString).appendingPathComponent(key.md5)
+                do {
+                    try data.write(to: URL(fileURLWithPath: filePath))
+                    
+                    // 4. 写入成功后，LRU 清理
+                    PerformanceMeasurer.measureAndPrint("写入") {
+                        self.trimRecursively()
+                    }
+                    
+                    // 5. 成功回调
+                    DispatchQueue.main.async {
+                        completion?(.success(()))
+                    }
+                } catch {
+                    throw SimpleCacheError.diskStorageFailed(reason: "Write file failed", underlying: error)
                 }
             } catch {
-                throw SimpleCacheError.writeError(error: error)
+                // 6. 失败回调
+                DispatchQueue.main.async {
+                    completion?(.failure(error))
+                }
             }
-           
         }
     }
     
-    func object<T: Codable>(for key: String, as type: T.Type) throws -> T? {
-        let filePath = (self.path as NSString).appendingPathComponent(key.md5)
-        let fileURL = URL(fileURLWithPath: filePath)
-        var data: Data?
-        do {
-            try data = Data(contentsOf: fileURL)
+    /// 异步读取对象
+    /// - Parameters:
+    ///   - key: 键
+    ///   - type: 类型
+    ///   - completion: 完成回调 (Result<T?, Error>)，在主线程回调
+    func object<T: Codable>(for key: String, as type: T.Type, completion: @escaping (Result<T?, Error>) -> Void) {
+        queue.async {
+            let filePath = (self.path as NSString).appendingPathComponent(key.md5)
+            let fileURL = URL(fileURLWithPath: filePath)
             
-            // 读取成功后，更新修改时间 (LRU 关键：标记为最近使用)
-            try FileManager.default.setAttributes([.modificationDate: Date()], ofItemAtPath: filePath)
-        } catch {
-            throw SimpleCacheError.readError(error: error)
-        }
-        
-        
-        if let data   {
-            let object: T?
+            // 1. 读取数据
+            let data: Data
             do {
-                try object =  JSONDecoder().decode(T.self, from: data)
+                data = try Data(contentsOf: fileURL)
+                // 更新修改时间
+                try FileManager.default.setAttributes([.modificationDate: Date()], ofItemAtPath: filePath)
             } catch {
-                throw SimpleCacheError.decodeError(error: error)
+                // 文件不存在不算错误，返回 nil
+                DispatchQueue.main.async {
+                    completion(.success(nil))
+                }
+                return
             }
-            return object
+            
+            // 2. 解码
+            do {
+                let object = try JSONDecoder().decode(T.self, from: data)
+                DispatchQueue.main.async {
+                    completion(.success(object))
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(.failure(SimpleCacheError.serializationFailed(reason: "Decode failed", underlying: error)))
+                }
+            }
         }
-        return nil
     }
     
     // MARK: - LRU & Trim
@@ -157,34 +190,70 @@ class SimpleDiskCache {
         }
     }
     
-    func remove(object: any Codable, for key: String) throws {
-        let key = (self.path as NSString).appendingPathComponent(key.md5)
-        do {
-            try FileManager.default.removeItem(atPath: key)
-        } catch {
-            throw SimpleCacheError.removeError(error: error)
+    func remove(for key: String, completion: ((Result<Void, Error>) -> Void)? = nil) {
+        queue.async {
+            let filePath = (self.path as NSString).appendingPathComponent(key.md5)
+            do {
+                if FileManager.default.fileExists(atPath: filePath) {
+                    try FileManager.default.removeItem(atPath: filePath)
+                }
+                DispatchQueue.main.async {
+                    completion?(.success(()))
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion?(.failure(error))
+                }
+            }
         }
-       
     }
     
-    func removeAllObject() throws {
-        do {
-            try FileManager.default.removeItem(atPath: path)
-        } catch {
-            throw SimpleCacheError.removeError(error: error)
+    func removeAllObject(completion: ((Result<Void, Error>) -> Void)? = nil) {
+        queue.async {
+            do {
+                if FileManager.default.fileExists(atPath: self.path) {
+                    try FileManager.default.removeItem(atPath: self.path)
+                    try FileManager.default.createDirectory(atPath: self.path, withIntermediateDirectories: true, attributes: nil)
+                }
+                DispatchQueue.main.async {
+                    completion?(.success(()))
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion?(.failure(error))
+                }
+            }
         }
-        
-        do {
-            // 注意 还得重新创建一个目录
-            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
-        } catch {
-            throw SimpleCacheError.createDirectory(error: error)
+
+    }
+    
+    func removeAllObject(completion: @escaping (Result<Void, Error>) -> Void) {
+        queue.async {
+            do {
+                if FileManager.default.fileExists(atPath: self.path) {
+                    try FileManager.default.removeItem(atPath: self.path)
+                    completion(.success(()))
+
+                }
+            } catch {
+                completion(.failure(SimpleCacheError.removeError(error:  SimpleCacheError.removeError(error: error))))
+            }
+            
+            do {
+                // 注意 还得重新创建一个目录
+                try FileManager.default.createDirectory(atPath: self.path, withIntermediateDirectories: true, attributes: nil)
+                completion(.success(()))
+            } catch {
+                completion(.failure(SimpleCacheError.removeError(error:  SimpleCacheError.createDirectory(error: error))))
+            }
         }
     }
     
     func totalDiskSize() -> Int {
-        let result =  FileManager.getDirectorySize(atPath: self.path)
-        return Int(result)
+        return queue.sync {
+            let result =  FileManager.getDirectorySize(atPath: self.path)
+            return Int(result)
+        }
     }
 
 }

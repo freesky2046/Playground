@@ -25,13 +25,15 @@ class CacheImitateViewController: UIViewController {
         let decoder = JSONDecoder()
         let res = try? decoder.decode(SimpleResponse.self, from: jsonData)
         cache.setObject(object: res, for: "home", cost: jsonData.count)
-        let simple = cache.object(for: "home", as: SimpleResponse.self)
-        print("读取成功:\(simple)")
+//        cache.object(for: "home", as: SimpleResponse.self, completion: {result in
+//            switch r
+//        })
+//        print("读取成功:\(simple)")
         
         cache.removeAllObject()
         
-        let simple2 = cache.object(for: "home", as: SimpleResponse.self)
-        print(simple2?.data?.name)
+//        cache.object(for: "home", as: SimpleResponse.self, completion: {_ in })
+//        print(simple2?.data?.name)
         
     }
     

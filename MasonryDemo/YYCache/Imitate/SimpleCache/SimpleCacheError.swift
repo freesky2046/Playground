@@ -8,17 +8,19 @@
 import Foundation
 
 enum SimpleCacheError: Error {
-    /// 编码
-    case encodeError(error: Error)
-    case decodeError(error: Error)
+    /// 1. 数据转换问题 (业务方传的对象有问题)
+    /// - reason: 错误描述
+    /// - underlying: 原始错误
+    case serializationFailed(reason: String, underlying: Error?)
     
-    /// 文件目录操作
-    case createDirectory(error: Error)
-
-    // 读写
-    case readError(error: Error)
-    case writeError(error: Error)
-    case removeError(error: Error)
+    /// 2. 磁盘/文件系统问题 (环境或权限问题)
+    /// - reason: 错误描述
+    /// - underlying: 原始错误
+    case diskStorageFailed(reason: String, underlying: Error?)
     
-    case unknownError
+    /// 3. 缓存逻辑问题 (已过期等)
+    case expired
+    
+    /// 4. 未知/其他
+    case unknown(underlying: Error?)
 }
