@@ -32,22 +32,22 @@ class SimpleCache {
     func setObject(object: any Codable, for key: String) {
         // 串行队列保证操作顺序
         // 内存操作极快，使用 sync 不会造成卡顿
-        lock.sync {
+//        lock.sync {
             // 内存缓存同步写入
             self.memoryCache.setObject(object: object, for: key)
             
             // 磁盘缓存异步写入
             // 虽然 diskCache 内部是异步的，但我们在这里按顺序发起调用
             self.diskCache.setObject(object: object, for: key)
-        }
+//        }
     }
     
     // 存: 大于1kb的用这个
     func setObject(object: any Codable, for key: String, cost: Int) {
-        lock.sync {
+//        lock.sync {
             self.memoryCache.setObject(object: object, for: key, cost: cost)
             self.diskCache.setObject(object: object, for: key)
-        }
+//        }
     }
     
     // MARK: - fetch
@@ -61,7 +61,7 @@ class SimpleCache {
         
         // 2. 🐢 慢速路径：内存没有，去排队读磁盘
         // 使用 sync 提交任务即可，因为内部的 diskCache.object 是异步的，不会阻塞
-        lock.sync {
+//        lock.sync {
             self.diskCache.object(for: key, as: type) { result in
                 switch result {
                 case .success(let object):
@@ -75,22 +75,22 @@ class SimpleCache {
                     completion(nil)
                 }
             }
-        }
+//        }
     }
     
     // MARK: - delete
     func remove(for key: String) {
-        lock.sync {
+//        lock.sync {
             self.memoryCache.remove(forkey: key)
             self.diskCache.remove(for: key)
-        }
+//        }
     }
     
     func removeAllObject() {
-        lock.sync {
+//        lock.sync {
             self.memoryCache.removeAllObject()
             self.diskCache.removeAllObject()
-        }
+//        }
     }
 
 }

@@ -12,6 +12,8 @@ import SnapKit
 class KingfisherViewController: UIViewController {
     var dataList: [String] = [
         "Basic",
+        "Network/SessionDelegate",
+        "NetoworkLayer"
     ]
     
     lazy var tableView: UITableView = {
@@ -47,6 +49,12 @@ extension KingfisherViewController: UITableViewDelegate {
         case "Basic":
             let basic = KingfisherBasicViewController()
             navigationController?.pushViewController(basic, animated: true)
+        case "Network/SessionDelegate":
+            let sessionDelegate = KingfisherSessionDelegateViewController()
+            navigationController?.pushViewController(sessionDelegate, animated: true)
+        case "NetoworkLayer":
+            let layer = KingfisherUseNetworkLayerViewController()
+            navigationController?.pushViewController(layer, animated: true)
         default:
             break
         }

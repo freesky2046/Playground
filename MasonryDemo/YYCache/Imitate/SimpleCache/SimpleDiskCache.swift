@@ -236,7 +236,7 @@ class SimpleDiskCache {
 
                 }
             } catch {
-                completion(.failure(SimpleCacheError.removeError(error:  SimpleCacheError.removeError(error: error))))
+//                completion(.failure(SimpleCacheError.removeError(error: error)))
             }
             
             do {
@@ -244,7 +244,7 @@ class SimpleDiskCache {
                 try FileManager.default.createDirectory(atPath: self.path, withIntermediateDirectories: true, attributes: nil)
                 completion(.success(()))
             } catch {
-                completion(.failure(SimpleCacheError.removeError(error:  SimpleCacheError.createDirectory(error: error))))
+//                completion(.failure(SimpleCacheError.removeError(error:  SimpleCacheError.createDirectory(error: error))))
             }
         }
     }

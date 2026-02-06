@@ -28,10 +28,7 @@ class MemoryCacheItem: NSObject {
 }
 
 class SimpleMemoryCache {
-    
-    // NSCache 本身是线程安全的，不需要额外的锁来保护 object/setObject/removeObject 操作
-    // 但如果我们需要保证 countLimit/totalCostLimit 的原子性或者组合操作的原子性，才需要锁
-    // 在这个简单实现中，我们直接利用 NSCache 的线程安全性
+  
     
     var totalCostLimit: Int  {
         get { cache.totalCostLimit }

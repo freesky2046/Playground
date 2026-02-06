@@ -19,7 +19,8 @@ class HomeViewController: UIViewController {
         "UIKitExtension",
         "YYCache",
         "BaiscKnowledge",
-        "Kingfisher"
+        "Kingfisher",
+        "FigmaDesign"
     ]
     
     lazy var tableView: UITableView = {
@@ -69,9 +70,14 @@ extension HomeViewController: UITableViewDelegate {
         case "BaiscKnowledge":
             let basic = BasicKnowledgeViewController()
             navigationController?.pushViewController(basic, animated: true)
+        case "Namespace":
+            let namespace = NamespaceViewController()
+            navigationController?.pushViewController(namespace, animated: true)
         case "Kingfisher":
             let kingfisher = KingfisherViewController()
             navigationController?.pushViewController(kingfisher, animated: true)
+        case "FigmaDesign":
+            break
         default:
             break
         }

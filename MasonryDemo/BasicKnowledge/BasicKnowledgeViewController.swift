@@ -12,7 +12,8 @@ import SnapKit
 class BasicKnowledgeViewController: UIViewController {
     var dataList: [String] = [
         "Queue",
-        "Lock"
+        "Lock",
+        "Timer"
     ]
     
     lazy var tableView: UITableView = {
@@ -49,8 +50,10 @@ extension BasicKnowledgeViewController: UITableViewDelegate {
             navigationController?.pushViewController(queue, animated: true)
         case "Lock":
             break
-//            let lock = LockViewController()
-//            navigationController?.pushViewController(lock, animated: true)
+        case "Timer":
+            let timer = UsageTimerViewController()
+            navigationController?.pushViewController(timer, animated: true)
+
         default:
             break
         }
