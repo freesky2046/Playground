@@ -27,6 +27,7 @@ class BasicKnowledgeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
@@ -53,7 +54,6 @@ extension BasicKnowledgeViewController: UITableViewDelegate {
         case "Timer":
             let timer = UsageTimerViewController()
             navigationController?.pushViewController(timer, animated: true)
-
         default:
             break
         }

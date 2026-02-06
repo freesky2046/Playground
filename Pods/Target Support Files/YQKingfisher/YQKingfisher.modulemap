@@ -1,0 +1,6 @@
+framework module YQKingfisher {
+  umbrella header "YQKingfisher-umbrella.h"
+
+  export *
+  module * { export * }
+}

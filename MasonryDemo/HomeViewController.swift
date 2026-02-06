@@ -20,7 +20,6 @@ class HomeViewController: UIViewController {
         "YYCache",
         "BaiscKnowledge",
         "Kingfisher",
-        "FigmaDesign"
     ]
     
     lazy var tableView: UITableView = {
@@ -76,8 +75,9 @@ extension HomeViewController: UITableViewDelegate {
         case "Kingfisher":
             let kingfisher = KingfisherViewController()
             navigationController?.pushViewController(kingfisher, animated: true)
-        case "FigmaDesign":
-            break
+        case "ThirdParty":
+            let thirdParty = UsageThirdPartyViewController()
+            navigationController?.pushViewController(thirdParty, animated: true)
         default:
             break
         }

@@ -3,16 +3,25 @@ PODS:
   - Cache (6.0.0)
   - Kingfisher (8.3.2)
   - SnapKit (5.7.1)
+  - YQKingfisher (6.3.1.2)
+  - YQPhotoBrowser (0.4.0):
+    - SnapKit
+    - YQKingfisher
   - YYCache (1.0.4)
   - YYText (1.0.7)
+  - ZLPhotoBrowser (4.5.6):
+    - ZLPhotoBrowser/Core (= 4.5.6)
+  - ZLPhotoBrowser/Core (4.5.6)
 
 DEPENDENCIES:
   - Alamofire
   - Cache
   - Kingfisher
   - SnapKit (~> 5.7)
+  - YQPhotoBrowser
   - YYCache
   - YYText
+  - ZLPhotoBrowser (= 4.5.6)
 
 SPEC REPOS:
   trunk:
@@ -20,17 +29,23 @@ SPEC REPOS:
     - Cache
     - Kingfisher
     - SnapKit
+    - YQKingfisher
+    - YQPhotoBrowser
     - YYCache
     - YYText
+    - ZLPhotoBrowser
 
 SPEC CHECKSUMS:
   Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
   Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
   Kingfisher: 0621d0ac0c78fecb19f6dc5303bde2b52abaf2f5
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
+  YQKingfisher: 0f07510aaed196a3364af97eeea5e5376fb23810
+  YQPhotoBrowser: 6bdfee44a426cd455ca8dbb3864c124b7a841a0d
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
+  ZLPhotoBrowser: 9fdd801da47d5aaff778b8213fc711bbadab9cb2
 
-PODFILE CHECKSUM: 62d6ccea401c91aaccf5c03df9bfcc776d1ae765
+PODFILE CHECKSUM: 4bc986d9d373c4d10c0aa5661bbdd80a5947b3a4
 
 COCOAPODS: 1.16.2

@@ -4,12 +4,18 @@ platform :ios, '13.0'
 target 'MasonryDemo' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+  ## core 
   pod 'SnapKit', '~> 5.7'
   pod 'YYText'
   pod 'Alamofire'
   pod 'YYCache'
   pod 'Kingfisher'
   pod 'Cache'
+  
+  ## ui thirdParty
+  pod 'ZLPhotoBrowser', '4.5.6'
+  pod 'YQPhotoBrowser'
+#  pod 'Cache'
   # Pods for MasonryDemo
 
   post_install do |installer|
