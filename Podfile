@@ -13,10 +13,15 @@ target 'MasonryDemo' do
   pod 'Cache'
   
   ## ui thirdParty
-  pod 'ZLPhotoBrowser', '4.5.6'
-  pod 'YQPhotoBrowser'
-#  pod 'Cache'
-  # Pods for MasonryDemo
+  pod 'ZLPhotoBrowser', '4.5.6' # 类微信系统相册查看器
+  pod 'YQPhotoBrowser'          # 图片浏览器,类似九宫格的全屏加载
+  pod 'IQKeyboardManagerSwift'  # 解决键盘遮挡
+  pod 'lottie-ios'              # 播放复杂动画
+  pod 'MBProgressHUD'           # 加载中/成功/失败提示
+  pod 'JXSegmentedView'
+  pod 'JXPagingView/Paging'
+#  pod 'FDFullscreenPopGesture'  # 全屏侧滑返回, 已经用 MDFullscreenPopGesture实现
+
 
   post_install do |installer|
     installer.generated_projects.each do |project|

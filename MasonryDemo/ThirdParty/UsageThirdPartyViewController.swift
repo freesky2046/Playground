@@ -9,9 +9,15 @@ import UIKit
 import YYText
 import SnapKit
 
+extension UsageThirdPartyViewController: RouteCompatible {
+    
+}
+
 class UsageThirdPartyViewController: UIViewController {
     var dataList: [String] = [
         "ZLPhotoBrowser", // 相册选择
+        "segmentView", // 分页
+        "pagingView"   // 悬停
        
     ]
     
@@ -26,14 +32,39 @@ class UsageThirdPartyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
-            make.top.equalToSuperview().offset(100.0)
+            make.top.equalToSuperview().offset(UIWindow.safeAreaInsets.top)
         }
+        
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+//        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // 恢复导航栏
+//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        
     }
 
 }
+
+extension UsageThirdPartyViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+           // Only allow swiping if there's a page to go back to
+           return (navigationController?.viewControllers.count ?? 0) > 1
+       }
+}
+                                            
+  
 
 extension UsageThirdPartyViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -47,6 +78,12 @@ extension UsageThirdPartyViewController: UITableViewDelegate {
         case "ZLPhotoBrowser":
             let photoBrower = PhotoBrowerViewController()
             navigationController?.pushViewController(photoBrower, animated: true)
+        case "segmentView":
+            let segmentView = SegmentedViewUseViewController()
+            navigationController?.pushViewController(segmentView, animated: true)
+        case "pagingView":
+            let pagingview = JXPagingViewUseViewController()
+            navigationController?.pushViewController(pagingview, animated: true)
         default:
             break
         }

@@ -9,6 +9,10 @@ import UIKit
 import YYText
 import SnapKit
 
+extension HomeViewController: RouteCompatible {
+    
+}
+
 class HomeViewController: UIViewController {
     var dataList: [String] = [
         "YYText",
@@ -20,6 +24,7 @@ class HomeViewController: UIViewController {
         "YYCache",
         "BaiscKnowledge",
         "Kingfisher",
+        "FigmaDesign"
     ]
     
     lazy var tableView: UITableView = {
@@ -33,6 +38,10 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "列表"
+        
+        
+        
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
@@ -69,15 +78,12 @@ extension HomeViewController: UITableViewDelegate {
         case "BaiscKnowledge":
             let basic = BasicKnowledgeViewController()
             navigationController?.pushViewController(basic, animated: true)
-        case "Namespace":
-            let namespace = NamespaceViewController()
-            navigationController?.pushViewController(namespace, animated: true)
         case "Kingfisher":
             let kingfisher = KingfisherViewController()
             navigationController?.pushViewController(kingfisher, animated: true)
-        case "ThirdParty":
-            let thirdParty = UsageThirdPartyViewController()
-            navigationController?.pushViewController(thirdParty, animated: true)
+        case "FigmaDesign":
+            let figma = FigmaDesignViewController()
+            navigationController?.pushViewController(figma, animated: true)
         default:
             break
         }

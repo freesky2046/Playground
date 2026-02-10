@@ -9,7 +9,13 @@ import UIKit
 import Kingfisher
 import SnapKit
 
+extension KingfisherBasicViewController: RouteCompatible {
+  
+}
+
 class KingfisherBasicViewController: UIViewController {
+    
+    var param: Int = 0
     
     lazy var scrollView: UIScrollView = {
         let sv = UIScrollView()

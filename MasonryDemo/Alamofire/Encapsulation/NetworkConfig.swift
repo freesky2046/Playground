@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 struct NetworkConfig {
-    // 数组-->二维元组-->数组-->字符串
+    // 字典-排序后字典->二维元组-->一纬数组-->字符串
     static  var commonQuery: String {
         let parameters = Self.commonParam
         var components: [(String, String)] = []

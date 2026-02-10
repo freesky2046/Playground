@@ -10,9 +10,9 @@ import Foundation
 class KingfisherSessionDataTask {
     private var lock = NSLock()
     private var _task: URLSessionDataTask?
-    private var _data: NSMutableData = NSMutableData()
+    private var _data: NSMutableData?
     
-    
+    // 回调改为单个，因为一个 Task 只对应一个请求
     var onCallback: ((Result<RetrieveImageResult, KFError>) -> Void)?
     
     var data: NSMutableData? {
@@ -25,7 +25,7 @@ class KingfisherSessionDataTask {
         }
          set {
              lock.lock()
-             _data = newValue ?? NSMutableData()
+             _data = newValue
              lock.unlock()
          }
     }

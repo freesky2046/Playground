@@ -17,4 +17,24 @@ extension UIWindow {
             .first { $0.isKeyWindow } // 取出第一个为keywindow的window
         return result
     }
+    
+    static var safeAreaInsets: UIEdgeInsets {
+        guard let window = keywindow else {
+            return UIEdgeInsets.zero
+        }
+        return window.safeAreaInsets
+    }
+    
+    static let deviceNavigationBarHeight: CGFloat = 44
+    static let deviceTabBarHeight: CGFloat = 49.0
+    
+    static var deviceNavigationFullHeight: CGFloat {
+        return safeAreaInsets.top + deviceNavigationBarHeight
+    }
+
+    static var deviceTabBarFullHeight: CGFloat {
+        return safeAreaInsets.bottom + deviceTabBarHeight
+    }
 }
+
+

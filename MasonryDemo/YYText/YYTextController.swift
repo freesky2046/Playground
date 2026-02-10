@@ -9,6 +9,10 @@ import UIKit
 import YYText
 import SnapKit
 
+extension YYTextController: RouteCompatible {
+    
+}
+
 class YYTextController: UIViewController {
     
     lazy var label: YYLabel = YYLabel()

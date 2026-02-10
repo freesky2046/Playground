@@ -21,6 +21,10 @@ class Person: NSObject, NSCoding {
         age = coder.decodeInteger(forKey: "age")
     }
 }
+ 
+extension CacheUsageViewController: RouteCompatible {
+    
+}
 
 class CacheUsageViewController: UIViewController {
 

@@ -1,6 +1,12 @@
 import UIKit
 import SnapKit
 
+
+extension AlamofireViewController: RouteCompatible {
+    
+}
+
+
 class AlamofireViewController: UIViewController {
     var dataList: [String] = [
         "第零阶段:基础知识",

@@ -54,7 +54,7 @@ class NetworkManager {
         return request
     }
     
-    //
+    // 任何遵从URLRequestConvertible的对象
     func request(_ convertible: any URLRequestConvertible, interceptor: (any RequestInterceptor)? = nil) -> DataRequest {
         let request =  session.request(convertible, interceptor: interceptor)
         logRequest(reqeust: request)

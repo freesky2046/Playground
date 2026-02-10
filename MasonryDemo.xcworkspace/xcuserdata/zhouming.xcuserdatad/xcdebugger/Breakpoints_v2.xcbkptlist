@@ -562,36 +562,6 @@
             endingLineNumber = "72"
             landmarkName = "SessionDataTask"
             landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "40ECD6E5-4AFB-4455-B2CB-0FC59507D76B - 6f969d61afe255cd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Kingfisher.SessionDataTask.onTaskDone.getter : Kingfisher.Delegate&lt;(Swift.Result&lt;(Foundation.Data, Swift.Optional&lt;__C.NSURLResponse&gt;), Kingfisher.KingfisherError&gt;, Swift.Array&lt;Kingfisher.SessionDataTask.TaskCallback&gt;), ()&gt;"
-                  moduleName = "Kingfisher"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhouming/Desktop/MasonryDemo/Pods/Kingfisher/Sources/Networking/SessionDataTask.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0">
-               </Location>
-               <Location
-                  uuid = "40ECD6E5-4AFB-4455-B2CB-0FC59507D76B - abe5ca947a15b080"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Kingfisher.SessionDataTask.init(task: __C.NSURLSessionDataTask) -&gt; Kingfisher.SessionDataTask"
-                  moduleName = "Kingfisher"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhouming/Desktop/MasonryDemo/Pods/Kingfisher/Sources/Networking/SessionDataTask.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -656,6 +626,86 @@
             endingLineNumber = "19"
             landmarkName = "KingfisherSessionDelegate"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C21D1539-7B6E-4957-B683-9E9B5B76251A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MasonryDemo/UIKitExtension/Encapsulation/UIWindow+Extension.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "deviceNavigationFullHeight"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "922429FF-2A3F-42B7-823E-5A7FA137BC7A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MasonryDemo/UIKitExtension/Encapsulation/UIWindow+Extension.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "safeAreaInsets"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1CE2F3B1-41A8-4C2D-A3CC-62CEA7C87D14"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/JXSegmentedView/Sources/Core/JXSegmentedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "listContainer"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4B89344B-7EE4-4192-972C-F4A4BBCAE02C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MasonryDemo/SceneDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "scene(_:willConnectTo:options:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DB1B6457-AD81-4E70-A376-2DDE753A2AB4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MasonryDemo/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -9,6 +9,10 @@ import UIKit
 import YYText
 import SnapKit
 
+extension KingfisherViewController: RouteCompatible {
+    
+}
+
 class KingfisherViewController: UIViewController {
     var dataList: [String] = [
         "Basic",
@@ -72,3 +76,4 @@ extension KingfisherViewController: UITableViewDataSource {
         return cell
     }
 }
+
