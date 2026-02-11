@@ -26,7 +26,7 @@ class KingfisherManager {
     static let shared = KingfisherManager()
     
     let downloader: KingfisherDownloader = KingfisherDownloader()
-    let imageCache: KingfisherCache = KingfisherCache()
+    let imageCache: KingfisherCache = KingfisherCache(name: "com.xx.xx")
     
     private init() { }
     

@@ -66,7 +66,7 @@ extension BasicKnowledgeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let title = dataList[indexPath.row]
-        
+        tableView.deselectRow(at: indexPath, animated: true)
         switch title {
         case "Queue":
             let queue = QueueViewController()

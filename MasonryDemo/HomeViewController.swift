@@ -24,7 +24,6 @@ class HomeViewController: UIViewController {
         "YYCache",
         "BaiscKnowledge",
         "Kingfisher",
-        "FigmaDesign"
     ]
     
     lazy var tableView: UITableView = {
@@ -39,9 +38,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "列表"
-        
-        
-        
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
@@ -81,9 +77,9 @@ extension HomeViewController: UITableViewDelegate {
         case "Kingfisher":
             let kingfisher = KingfisherViewController()
             navigationController?.pushViewController(kingfisher, animated: true)
-        case "FigmaDesign":
-            let figma = FigmaDesignViewController()
-            navigationController?.pushViewController(figma, animated: true)
+//        case "FigmaDesign":
+//            let figma = FigmaDesignViewController()
+//            navigationController?.pushViewController(figma, animated: true)
         case "ThirdParty":
             try? SimpleRouter.shared.route(url: "md://thirdParty")
         default:
@@ -91,6 +87,8 @@ extension HomeViewController: UITableViewDelegate {
         }
     }
 }
+
+
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
