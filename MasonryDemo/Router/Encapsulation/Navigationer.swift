@@ -29,8 +29,4 @@ class Navigationer {
         targetVC.handleParams(params: params)
         viewcontroller?.present(targetVC, animated: animated)
     }
-    
-    
-
- 
 }

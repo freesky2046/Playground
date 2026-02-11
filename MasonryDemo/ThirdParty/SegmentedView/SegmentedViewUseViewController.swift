@@ -18,20 +18,17 @@ class SegmentedViewUseViewController: UIViewController  {
     lazy var dataSource: JXSegmentedTitleDataSource = JXSegmentedTitleDataSource()
     lazy var listContainer: JXSegmentedListContainerView = JXSegmentedListContainerView(dataSource: self)
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        // 恢复导航栏
-//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+//        md_popGestureDisable = segmentedView.selectedIndex != 0
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        
+        md_hideNavigationBar = true
         
         // 使用 UINavigationBarAppearance 设置导航栏外观（iOS 13+ 推荐）
         let appearance = UINavigationBarAppearance()
@@ -55,6 +52,7 @@ class SegmentedViewUseViewController: UIViewController  {
         segmentedView.contentEdgeInsetLeft = 20.0
         segmentedView.backgroundColor = UIColor.white
         segmentedView.dataSource = self.dataSource
+        segmentedView.delegate = self
         view.addSubview(segmentedView)
         segmentedView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(UIWindow.safeAreaInsets.top)
@@ -83,6 +81,17 @@ extension SegmentedViewUseViewController: JXSegmentedListContainerViewDataSource
     func listContainerView(_ listContainerView: JXSegmentedListContainerView, initListAt index: Int) -> any JXSegmentedListContainerViewListDelegate {
         let list = ListViewController()
         return list
+    }
+    
+    func scrollViewClass(in listContainerView: JXSegmentedListContainerView) -> AnyClass {
+        MDScrollView.self
+    }
+    
+}
+
+extension SegmentedViewUseViewController: JXSegmentedViewDelegate {
+    func segmentedView(_ segmentedView: JXSegmentedView, didSelectedItemAt index: Int) {
+//        md_popGestureDisable = segmentedView.selectedIndex != 0
     }
 }
 

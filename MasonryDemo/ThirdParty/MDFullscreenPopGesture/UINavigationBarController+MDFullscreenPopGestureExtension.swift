@@ -64,6 +64,7 @@ extension UINavigationController {
             self.interactivePopGestureRecognizer?.view?.addGestureRecognizer(md_FullscreenPopGestureRecognizer)
             
             // 比较少人知道的知识 获取系统手势的target action,让自定义的接管
+            // 参考见 https://www.jianshu.com/p/d39f7d22db6c
             if let targets = interactivePopGestureRecognizer?.value(forKey: "targets") as? [AnyObject] {
                 if let targetObj = targets.first, let target = targetObj.value(forKey: "target") {
                     let action = NSSelectorFromString("handleNavigationTransition:")
@@ -108,6 +109,7 @@ extension UINavigationBarControllerDelegate: UIGestureRecognizerDelegate {
             return false
         }
         // 比较少人知道的知识 动画中
+        // 参考见 https://www.jianshu.com/p/d39f7d22db6c
         if let isTransitioning = navigationController?.value(forKey: "_isTransitioning") as? Bool, isTransitioning == true {
             return false
         }

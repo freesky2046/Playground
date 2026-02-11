@@ -18,14 +18,22 @@ class UseNavigationBarController: UIViewController, UIGestureRecognizerDelegate 
         
         // black: 把状态栏时间/电量变成 白色
         // default: 把状态栏时间/电量变成 黑色
+        // 新api 使用 preferredStatusBarStyle
         navigationController?.navigationBar.barStyle = .black
         // 用于导航栏的背景色
+        // 新api  appearance.backgroundColor = .white
+
+        
         navigationController?.navigationBar.barTintColor = .black
         // 透视开关 半透明效果, 是否和底部的视图融合
+        // 新api
+        // appearance.backgroundEffect
         navigationController?.navigationBar.isTranslucent = true
         // 旧版标题颜色
+        // 新api  appearance.titleTextAttributes
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.blue]
         // 旧版返回按钮图标
+        // 新api setBackIndicatorImage
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "img")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "img")
        

@@ -42,7 +42,6 @@ class KingfisherDownloader {
     func download(url: String, onComplete: @escaping (Result<RetrieveImageResult, KFError>) -> Void) {
         let URL =  URL(string: url)!
         let task = session.dataTask(with: URL)
-        
         sessionDelegate.addTask(task: task, url: URL, onComplete: onComplete)
         task.resume()
     }

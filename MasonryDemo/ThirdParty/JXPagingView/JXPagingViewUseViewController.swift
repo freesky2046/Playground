@@ -11,6 +11,7 @@ import JXPagingView
 import JXSegmentedView
 import SnapKit
 
+// 让 JXPagingListContainerView 遵从 JXSegmentedViewListContainer 协议
 extension JXPagingListContainerView: @retroactive JXSegmentedViewListContainer {}
 
 class HeaderView: UIView {
@@ -29,6 +30,7 @@ class JXPagingViewUseViewController: UIViewController {
     let dataSource: JXSegmentedTitleDataSource = JXSegmentedTitleDataSource()
     lazy var segmentedView: JXSegmentedView = JXSegmentedView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(pinSectionHeaderHeight)))
     lazy var pagingView: JXPagingView = JXPagingView(delegate: self, listContainerType: .scrollView)
+    
     var titles = ["能力", "爱好", "队友"]
     var pinSectionHeaderHeight: Int = 44
     var userHeaderViewHeight: Int = 200
@@ -36,7 +38,7 @@ class JXPagingViewUseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+        self.md_hideNavigationBar = true
         dataSource.titles = titles
         dataSource.isItemSpacingAverageEnabled = false
         segmentedView.dataSource = dataSource
@@ -46,13 +48,9 @@ class JXPagingViewUseViewController: UIViewController {
             make.top.equalToSuperview().offset(UIWindow.safeAreaInsets.top)
             make.left.bottom.right.equalToSuperview()
         }
-        // 很重要,先要让 JXPagingListContainerView 遵从协议
-//        extension JXPagingListContainerView: @retroactive JXSegmentedViewListContainer {}
+        // 很重要,先要让 JXPagingListContainerView 遵从JXSegmentedViewListContainer协议
         segmentedView.listContainer = pagingView.listContainerView
         pagingView.reloadData()
-        
-        pagingView.listContainerView.scrollView.panGestureRecognizer.require(toFail: self.navigationController!.interactivePopGestureRecognizer!)
-        pagingView.mainTableView.panGestureRecognizer.require(toFail: self.navigationController!.interactivePopGestureRecognizer!)
     }
 }
 
@@ -120,7 +118,7 @@ class PagingListViewController: UIViewController, JXPagingViewListViewDelegate {
     func listView() -> UIView {
         return self.view
     }
-
+    
 }
 
 extension PagingListViewController: UITableViewDelegate {

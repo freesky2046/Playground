@@ -16,7 +16,6 @@ class KingfisherSessionDelegate: NSObject {
     /// 线程安全队列（用于操作 taskMap）
     private let taskMapQueue = DispatchQueue(label: "com.example.KingfisherSessionDelegateViewController.TaskMapQueue")
     
-
     // 将indentierfer和task对应起来,
     // 构造一个信息更多的task
     func addTask(task: URLSessionDataTask, url: URL, onComplete: @escaping (Result<RetrieveImageResult, KFError>) -> Void) {

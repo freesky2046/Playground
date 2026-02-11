@@ -39,7 +39,8 @@ class UsageThirdPartyViewController: UIViewController {
             make.top.equalToSuperview().offset(UIWindow.safeAreaInsets.top)
         }
         
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        md_hideNavigationBar = true
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -19,6 +19,7 @@ class QueueViewController: UIViewController {
         "5.单线程同步提交多个任务+串行队列:和不加队列的执行效果一样,不开线程",
         "6.单线程异步提交多个任务+并行队列:开多个线程,并行执行",
         "7.单线程同步提交多个任务+串行队列:和不加队列的执行效果一样,不开线程",
+        "8.仅父有锁,子无锁"
     ]
     
     lazy var tableView: UITableView = {
@@ -92,6 +93,10 @@ class QueueViewController: UIViewController {
         thread6.start()
     }
     
+    func codition8() {
+        let onlySuperLock = OnlySuperLockViewController()
+        navigationController?.pushViewController(onlySuperLock, animated: true)
+    }
     
     // 同步并行
     @objc func syncCommitCorruent() {
@@ -162,6 +167,8 @@ extension QueueViewController: UITableViewDelegate {
             self.codition2()
         case "3":
             self.codition3()
+        case "8":
+            self.codition8()
         default:
             break
         }

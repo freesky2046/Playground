@@ -84,6 +84,8 @@ extension HomeViewController: UITableViewDelegate {
         case "FigmaDesign":
             let figma = FigmaDesignViewController()
             navigationController?.pushViewController(figma, animated: true)
+        case "ThirdParty":
+            try? SimpleRouter.shared.route(url: "md://thirdParty")
         default:
             break
         }
