@@ -18,6 +18,7 @@ extension UIViewController {
         static var kmd_hideNavigationBarKey: UInt8 = 0
         static var kmd_willAppearInjectClosureKey: UInt8 = 0
         static var kmd_popGestureDisableKey: UInt8 = 0
+        static var kmd_tabBarAutoHideDisableKey: UInt8 = 0
     }
     
     // 会被桥接成nsnumber,因此不是copy属性而是strong属性策略
@@ -46,6 +47,21 @@ extension UIViewController {
         }
         set {
             objc_setAssociatedObject(self, &AssociatedObjectKeys.kmd_popGestureDisableKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    /// 是否禁用 Push 时自动隐藏 TabBar (默认为 false，即开启自动隐藏)
+    var md_tabBarAutoHideDisable: Bool {
+        get {
+            if let value = objc_getAssociatedObject(self, &AssociatedObjectKeys.kmd_tabBarAutoHideDisableKey) as? Bool {
+                return value
+            }
+            let defaultResult = false
+            objc_setAssociatedObject(self, &AssociatedObjectKeys.kmd_tabBarAutoHideDisableKey, defaultResult, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            return defaultResult
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedObjectKeys.kmd_tabBarAutoHideDisableKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     

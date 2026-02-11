@@ -87,6 +87,12 @@ extension UINavigationController {
             lastViewcontroller.md_willAppearInjectClosure = viewWillAppearClosure
         }
         
+        // 自动隐藏 TabBar
+        // 如果当前堆栈中有 View Controller (说明是 Push 到下一级)，且未禁用自动隐藏，则设置 hidesBottomBarWhenPushed = true
+        if self.viewControllers.count > 0 && viewController.md_tabBarAutoHideDisable == false {
+            viewController.hidesBottomBarWhenPushed = true
+        }
+        
         // 必须调用原始实现，否则 Push 动作不会发生！
         self.swizzled_pushViewController(viewController, animated: animated)
     }

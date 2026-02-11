@@ -11,6 +11,8 @@ class RouterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = DSColor.backgroundPrimary
+        md_hideNavigationBar = true
     }
 
 

@@ -12,10 +12,10 @@ import UIKit
 public struct DSColor {
     
     // MARK: - Brand Colors (品牌色)
-    /// 主品牌色
-    public static let brand = UIColor(hex: 0x007AFF) // 示例蓝
-    /// 品牌辅助色
-    public static let brandLight = UIColor(hex: 0xE6F2FF)
+    /// 主品牌色 - 珊瑚红 (Coral Red)
+    public static let brand = UIColor(hex: 0xFF6B6B)
+    /// 品牌辅助色 - 浅粉 (Blush)
+    public static let brandLight = UIColor(hex: 0xFFEEEE)
     
     // MARK: - Semantic Colors (语义色)
     public static let success = UIColor(hex: 0x34C759)
@@ -59,6 +59,26 @@ public struct DSColor {
         }
     }
     
+    // MARK: - TabBar Colors
+    /// TabBar 选中颜色 (通常跟随品牌色)
+    public static var tabBarSelected: UIColor {
+        return brand
+    }
+    
+    /// TabBar 未选中颜色 (通常是灰色)
+    public static var tabBarUnselected: UIColor {
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(hex: 0x8E8E93) : UIColor(hex: 0x999999)
+        }
+    }
+    
+    /// TabBar 背景色 (毛玻璃下的底色)
+    public static var tabBarBackground: UIColor {
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(hex: 0x1C1C1E) : UIColor.white
+        }
+    }
+
     // MARK: - Separator (分割线)
     public static var separator: UIColor {
         return UIColor { traitCollection in
