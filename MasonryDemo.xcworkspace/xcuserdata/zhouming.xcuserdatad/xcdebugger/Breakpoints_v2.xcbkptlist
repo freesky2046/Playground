@@ -562,36 +562,6 @@
             endingLineNumber = "72"
             landmarkName = "SessionDataTask"
             landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "40ECD6E5-4AFB-4455-B2CB-0FC59507D76B - 6f969d61afe255cd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Kingfisher.SessionDataTask.onTaskDone.getter : Kingfisher.Delegate&lt;(Swift.Result&lt;(Foundation.Data, Swift.Optional&lt;__C.NSURLResponse&gt;), Kingfisher.KingfisherError&gt;, Swift.Array&lt;Kingfisher.SessionDataTask.TaskCallback&gt;), ()&gt;"
-                  moduleName = "Kingfisher"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhouming/Desktop/MasonryDemo/Pods/Kingfisher/Sources/Networking/SessionDataTask.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0">
-               </Location>
-               <Location
-                  uuid = "40ECD6E5-4AFB-4455-B2CB-0FC59507D76B - abe5ca947a15b080"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Kingfisher.SessionDataTask.init(task: __C.NSURLSessionDataTask) -&gt; Kingfisher.SessionDataTask"
-                  moduleName = "Kingfisher"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhouming/Desktop/MasonryDemo/Pods/Kingfisher/Sources/Networking/SessionDataTask.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -751,22 +721,6 @@
             startingLineNumber = "198"
             endingLineNumber = "198"
             landmarkName = "preferredProcessListViewDidScroll(scrollView:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9C0257A4-9E40-412F-BAA4-E492E0FD7263"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MasonryDemo/Demos/BasicKnowledge/Tabbar/MDESTabBarController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "setupAppearance()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -50,19 +50,26 @@ class MDESTabBarController: ESTabBarController {
     
     private func setupChild(_ vc: UIViewController, title: String, imageName: String, selectedImageName: String) {
         vc.title = title
+        // 本身内容还是靠tabbarItem
         vc.tabBarItem.title = title
-        vc.tabBarItem.image = UIImage(systemName: imageName)
-        vc.tabBarItem.selectedImage = UIImage(systemName: selectedImageName)
+        vc.tabBarItem.image = UIImage(systemName: imageName)?.withRenderingMode(.alwaysOriginal)
+        vc.tabBarItem.selectedImage = UIImage(systemName: selectedImageName)?.withRenderingMode(.alwaysOriginal)
     }
     
     
     func setupAppearance() {
-        // 不生效
-        tabBar.standardAppearance.backgroundColor = .brown
-        // 生效
-        tabBar.barTintColor = .red
+        setupTabBarStyle()
     }
-
+    
+    func setupTabBarStyle() {
+        let standardAppearance = tabBar.standardAppearance
+        standardAppearance.backgroundColor = .red
+        tabBar.standardAppearance = standardAppearance
+        
+        let scrollEdgeAppearance = UITabBarAppearance()
+        scrollEdgeAppearance.backgroundColor = .blue
+        tabBar.scrollEdgeAppearance = scrollEdgeAppearance
+    }
 
 
 }

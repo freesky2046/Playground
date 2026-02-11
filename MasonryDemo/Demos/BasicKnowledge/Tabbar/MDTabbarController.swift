@@ -49,6 +49,7 @@ class MDTabbarController: UITabBarController {
     
     private func setupChild(_ vc: UIViewController, title: String, imageName: String, selectedImageName: String) {
         vc.title = title
+        // 本身内容还是靠tabbarItem
         vc.tabBarItem.title = title
         vc.tabBarItem.image = UIImage(systemName: imageName)?.withRenderingMode(.alwaysOriginal)
         vc.tabBarItem.selectedImage = UIImage(systemName: selectedImageName)?.withRenderingMode(.alwaysOriginal)
@@ -80,12 +81,11 @@ class MDTabbarController: UITabBarController {
         // 同步到 inline/compact 模式
         appearance.inlineLayoutAppearance = itemAppearance
         appearance.compactInlineLayoutAppearance = itemAppearance
-        
         tabBar.standardAppearance = appearance
         if #available(iOS 15.0, *) {
             tabBar.scrollEdgeAppearance = appearance
         }
-        
+
         // 兜底设置
         tabBar.tintColor = DSColor.tabBarSelected
     }
