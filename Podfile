@@ -27,6 +27,8 @@ target 'MasonryDemo' do
   pod 'JXSegmentedView'          # 分段控件，支持多种样式和动画效果
   pod 'JXPagingView/Paging'      # 分页视图，支持列表分页和多种切换效果
   pod 'DZNEmptyDataSet'          # 空状态、无网络、错误页面显示库，支持 UITableView 和 UICollectionView
+  pod 'MBProgressHUD'
+  pod "ESTabBarController-swift"
 #  pod 'FDFullscreenPopGesture'  # 全屏侧滑返回, 已经用 MDFullscreenPopGesture实现
 
 

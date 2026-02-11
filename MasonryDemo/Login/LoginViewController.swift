@@ -129,11 +129,13 @@ class LoginViewController: UIViewController {
         // 模拟登录加载
         loginButton.isEnabled = false
         loginButton.setTitle("Signing in...", for: .normal)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             UserDefaults.standard.set(true, forKey: "isLogin")
-//            
-//             切换到主页面
-            if let window = UIWindow.keywindow {
+            
+            // 切换到主页面
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let window = windowScene.windows.first {
                 // 简单的转场动画
                 UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
                     window.rootViewController = MDTabbarController()

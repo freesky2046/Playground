@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 /// Design System Standard Button
 public class DSButton: UIButton {
@@ -17,8 +18,42 @@ public class DSButton: UIButton {
         case text       // 纯文字
     }
     
+    public enum Size {
+        case small
+        case medium
+        case large
+        
+        var height: CGFloat {
+            switch self {
+            case .small: return 32
+            case .medium: return 44
+            case .large: return 56
+            }
+        }
+        
+        var font: UIFont {
+            switch self {
+            case .small: return .systemFont(ofSize: 14, weight: .medium)
+            case .medium: return DSTypography.h3
+            case .large: return DSTypography.h3
+            }
+        }
+        
+        var contentInsets: UIEdgeInsets {
+            switch self {
+            case .small: return UIEdgeInsets(top: 4, left: 12, bottom: 4, right: 12)
+            case .medium: return UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+            case .large: return UIEdgeInsets(top: 12, left: 24, bottom: 12, right: 24)
+            }
+        }
+    }
+    
     public var style: Style = .primary {
         didSet { updateStyle() }
+    }
+    
+    public var size: Size = .medium {
+        didSet { updateSize() }
     }
     
     public override var isEnabled: Bool {
@@ -27,12 +62,18 @@ public class DSButton: UIButton {
         }
     }
     
-    public init(title: String, style: Style = .primary) {
+    public init(style: Style = .primary, size: Size = .medium) {
         super.init(frame: .zero)
         self.style = style
-        setTitle(title, for: .normal)
+        self.size = size
         setupUI()
         updateStyle()
+        updateSize()
+    }
+    
+    public convenience init(title: String, style: Style = .primary, size: Size = .medium) {
+        self.init(style: style, size: size)
+        setTitle(title, for: .normal)
     }
     
     required init?(coder: NSCoder) {
@@ -40,10 +81,21 @@ public class DSButton: UIButton {
     }
     
     private func setupUI() {
-        titleLabel?.font = DSTypography.h3
         layer.cornerRadius = DSSpacing.radiusMedium
         layer.masksToBounds = true
-        contentEdgeInsets = UIEdgeInsets(top: DSSpacing.s, left: DSSpacing.l, bottom: DSSpacing.s, right: DSSpacing.l)
+    }
+    
+    public override var intrinsicContentSize: CGSize {
+        let labelSize = titleLabel?.intrinsicContentSize ?? .zero
+        let width = labelSize.width + contentEdgeInsets.left + contentEdgeInsets.right
+        // 保证最小宽度，或者直接使用计算宽度
+        return CGSize(width: max(width, size.height), height: size.height)
+    }
+    
+    private func updateSize() {
+        titleLabel?.font = size.font
+        contentEdgeInsets = size.contentInsets
+        invalidateIntrinsicContentSize()
     }
     
     private func updateStyle() {

@@ -1,6 +1,8 @@
 PODS:
   - Alamofire (5.10.2)
   - Cache (6.0.0)
+  - DZNEmptyDataSet (1.8.1)
+  - ESTabBarController-swift (2.8.0)
   - IQKeyboardCore (1.0.8)
   - IQKeyboardManagerSwift (8.0.1):
     - IQKeyboardManagerSwift/Appearance (= 8.0.1)
@@ -58,6 +60,8 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Cache
+  - DZNEmptyDataSet
+  - ESTabBarController-swift
   - IQKeyboardManagerSwift
   - JXPagingView/Paging
   - JXSegmentedView
@@ -74,6 +78,8 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Cache
+    - DZNEmptyDataSet
+    - ESTabBarController-swift
     - IQKeyboardCore
     - IQKeyboardManagerSwift
     - IQKeyboardNotification
@@ -97,6 +103,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
   Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  ESTabBarController-swift: 05593a6ad64700b03c0eb60ff625916370aa4136
   IQKeyboardCore: 8652977ec919cf5351aa2977fedd1a6546476fbc
   IQKeyboardManagerSwift: 835fc9c6e4732398113406d84900ad2e8f141218
   IQKeyboardNotification: d7382c4466c5a5adef92c7452ebf861b36050088
@@ -117,6 +125,6 @@ SPEC CHECKSUMS:
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   ZLPhotoBrowser: 9fdd801da47d5aaff778b8213fc711bbadab9cb2
 
-PODFILE CHECKSUM: d884c656bf444077ba832a8fd678fd5f42e61c12
+PODFILE CHECKSUM: 81f22fa1fb79faad0e3ec239bc9bca5fcf5d43d2
 
 COCOAPODS: 1.16.2

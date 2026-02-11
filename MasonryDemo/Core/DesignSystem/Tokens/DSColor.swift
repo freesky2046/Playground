@@ -88,7 +88,7 @@ public struct DSColor {
 }
 
 // 简单的 Hex 扩展辅助
-private extension UIColor {
+extension UIColor {
     convenience init(hex: Int, alpha: CGFloat = 1.0) {
         let r = CGFloat((hex >> 16) & 0xFF) / 255.0
         let g = CGFloat((hex >> 8) & 0xFF) / 255.0

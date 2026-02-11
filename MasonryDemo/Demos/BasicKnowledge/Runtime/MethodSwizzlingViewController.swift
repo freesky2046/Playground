@@ -22,8 +22,8 @@ extension UIViewController {
             return
         }
         
-        // 核心交换逻辑
-        // 如果是继承关系，先尝试 addMethod，成功说明父类没实现，直接交换；失败说明已存在，直接 exchange
+        
+        
         let didAddMethod = class_addMethod(
             UIViewController.self,
             originalSelector,

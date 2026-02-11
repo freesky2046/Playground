@@ -41,7 +41,8 @@ class BasicKnowledgeViewController: UIViewController {
         ItemModel(title: "Timer", subtitle: "NSTimer, GCD Timer 使用与注意事项", icon: "timer", actionKey: "Timer"),
         ItemModel(title: "Associated Object", subtitle: "Runtime 关联对象原理解析", icon: "link", actionKey: "AssociatedObject"),
         ItemModel(title: "Navigation", subtitle: "导航栏样式定制与交互", icon: "compass.drawing", actionKey: "Navigation"),
-        ItemModel(title: "TabBar Appearance", subtitle: "TabBar 样式深度定制指南", icon: "menubar.dock.rectangle", actionKey: "TabBarAppearance")
+        ItemModel(title: "TabBar Appearance", subtitle: "TabBar 样式深度定制指南", icon: "menubar.dock.rectangle", actionKey: "TabBarAppearance"),
+        ItemModel(title: "Design System", subtitle: "Banner, Card, Tokens 等组件展示", icon: "paintbrush.fill", actionKey: "DesignSystem")
     ]
     
     lazy var tableView: UITableView = {
@@ -101,6 +102,9 @@ extension BasicKnowledgeViewController: UITableViewDelegate {
             let vc = TabbarAppearanceDemoViewController()
             vc.md_tabBarAutoHideDisable = true // 禁用自动隐藏，因为这个页面需要展示 TabBar 效果
             vc.hidesBottomBarWhenPushed = false
+            navigationController?.pushViewController(vc, animated: true)
+        case "DesignSystem":
+            let vc = DesignSystemDemoViewController()
             navigationController?.pushViewController(vc, animated: true)
         default:
             break

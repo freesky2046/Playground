@@ -50,8 +50,8 @@ class MDTabbarController: UITabBarController {
     private func setupChild(_ vc: UIViewController, title: String, imageName: String, selectedImageName: String) {
         vc.title = title
         vc.tabBarItem.title = title
-        vc.tabBarItem.image = UIImage(systemName: imageName)
-        vc.tabBarItem.selectedImage = UIImage(systemName: selectedImageName)
+        vc.tabBarItem.image = UIImage(systemName: imageName)?.withRenderingMode(.alwaysOriginal)
+        vc.tabBarItem.selectedImage = UIImage(systemName: selectedImageName)?.withRenderingMode(.alwaysOriginal)
     }
     
     private func setupAppearance() {

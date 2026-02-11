@@ -69,6 +69,7 @@ class TabbarAppearanceDemoViewController: UIViewController {
         stack.addArrangedSubview(createButton(title: "4. 自定义背景色 (Custom Color)", action: #selector(configureCustomColor)))
         stack.addArrangedSubview(createButton(title: "5. 自定义 Item 样式", action: #selector(configureItemAppearance)))
         stack.addArrangedSubview(createButton(title: "重置 (Reset)", action: #selector(resetAppearance)))
+        stack.addArrangedSubview(createButton(title: "第三方 ", action: #selector(useESTabbar)))
     }
     
     private func createButton(title: String, action: Selector) -> UIButton {
@@ -97,7 +98,7 @@ class TabbarAppearanceDemoViewController: UIViewController {
         appearance.configureWithOpaqueBackground()
         // 可以在此基础上微调
         // 1.背景色
-        appearance.backgroundColor = .white // 确保是纯色
+        appearance.backgroundColor = .yellow // 确保是纯色
         
         // 2.icon颜色
         appearance.stackedLayoutAppearance.selected.iconColor = DSColor.tabBarSelected
@@ -194,5 +195,13 @@ class TabbarAppearanceDemoViewController: UIViewController {
         
         // Reset local reference
         self.appearance.configureWithDefaultBackground()
+    }
+    
+    @objc private func useESTabbar() {
+        guard let window = UIWindow.keywindow else {
+            return
+        }
+        let tabbarController = MDESTabBarController()
+        window.rootViewController = tabbarController
     }
 }

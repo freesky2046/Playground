@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         window.backgroundColor = DSColor.backgroundPrimary // 适配深色模式背景
-        
+
         // Check Login State
         let isLogin = UserDefaults.standard.bool(forKey: "isLogin")
         

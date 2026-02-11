@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  UsageThirdPartyViewController.swift
 //  MasonryDemo
 //
 //  Created by 周明 on 2026/1/20.
@@ -14,68 +14,64 @@ extension UsageThirdPartyViewController: RouteCompatible {
 }
 
 class UsageThirdPartyViewController: UIViewController {
-    var dataList: [String] = [
-        "ZLPhotoBrowser", // 相册选择
-        "segmentView", // 分页
-        "pagingView"   // 悬停
-       
+    
+    struct ItemModel {
+        let title: String
+        let subtitle: String
+        let icon: String
+        let actionKey: String
+    }
+    
+    lazy var dataList: [ItemModel] = [
+        ItemModel(title: "ZLPhotoBrowser", subtitle: "高性能图片/视频选择框架", icon: "photo.on.rectangle.angled", actionKey: "ZLPhotoBrowser"),
+        ItemModel(title: "Segment View", subtitle: "JXSegmentedView 分页控制组件", icon: "square.split.3x1.fill", actionKey: "segmentView"),
+        ItemModel(title: "Paging View", subtitle: "JXPagingView 悬停列表组件", icon: "arrow.up.and.down.circle.fill", actionKey: "pagingView"),
+        ItemModel(title: "Empty Data Set", subtitle: "DZNEmptyDataSet 空状态管理", icon: "square.dashed", actionKey: "DZNEmptyDataSet")
     ]
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.contentInsetAdjustmentBehavior = .never
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: NSStringFromClass(UITableViewCell.self))
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = DSColor.backgroundPrimary
+        tableView.contentInset = UIEdgeInsets(top: DSSpacing.m, left: 0, bottom: DSSpacing.m, right: 0)
+        tableView.register(DSCardListCell.self, forCellReuseIdentifier: "DSCardListCell")
         return tableView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        self.navigationItem.title = "Third Party"
+        view.backgroundColor = DSColor.backgroundPrimary
+        
+        // 导航栏大标题风格
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
-            make.top.equalToSuperview().offset(UIWindow.safeAreaInsets.top)
+            make.edges.equalToSuperview()
         }
-        
-        md_hideNavigationBar = true
-
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-//        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        // 恢复导航栏
-//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        
-    }
-
 }
 
-extension UsageThirdPartyViewController: UIGestureRecognizerDelegate {
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-           // Only allow swiping if there's a page to go back to
-           return (navigationController?.viewControllers.count ?? 0) > 1
-       }
-}
-                                            
-  
-
-extension UsageThirdPartyViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        44.0
+extension UsageThirdPartyViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DSCardListCell", for: indexPath) as! DSCardListCell
+        let item = dataList[indexPath.row]
+        cell.configure(title: item.title, subtitle: item.subtitle, iconName: item.icon)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let title = dataList[indexPath.row]
+        let item = dataList[indexPath.row]
         
-        switch title {
+        switch item.actionKey {
         case "ZLPhotoBrowser":
             let photoBrower = PhotoBrowerViewController()
             navigationController?.pushViewController(photoBrower, animated: true)
@@ -85,20 +81,11 @@ extension UsageThirdPartyViewController: UITableViewDelegate {
         case "pagingView":
             let pagingview = JXPagingViewUseViewController()
             navigationController?.pushViewController(pagingview, animated: true)
+        case "DZNEmptyDataSet":
+            let usage = DZNEmptyDataSetUsageViewController()
+            navigationController?.pushViewController(usage, animated: true)
         default:
             break
         }
-    }
-}
-
-extension UsageThirdPartyViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dataList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(UITableViewCell.self), for: indexPath)
-        cell.textLabel?.text = dataList[indexPath.row]
-        return cell
     }
 }

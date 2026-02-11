@@ -49,7 +49,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Home"
+        self.title = "Masonry Demo"
         view.backgroundColor = DSColor.backgroundPrimary
         
         // 导航栏大标题风格
