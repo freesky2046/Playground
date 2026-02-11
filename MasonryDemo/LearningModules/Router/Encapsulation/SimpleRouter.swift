@@ -15,17 +15,17 @@ class SimpleRouter {
     }
 
     var scheme: String = "md"
-    private var routeMap: [String: Route] = [:]
+    private var routeMap: [String: any RouteConvertible] = [:]
     private var parser: RouteParser = RouteParser()
     
     static var  shared: SimpleRouter = SimpleRouter()
     
     private init() {
-        registerRoute()
+        
     }
     
-    private func registerRoute() {
-        for route in Route.allCases {
+    func register<T: RouteConvertible>(route: T.Type) {
+        for route in route.allCases {
             routeMap[route.host.lowercased()] = route
         }
     }

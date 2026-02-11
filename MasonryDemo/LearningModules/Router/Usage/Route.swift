@@ -7,7 +7,8 @@
 
 import UIKit
 
-enum Route: CaseIterable {
+
+enum Route: RouteConvertible {
     case home
     case alamofire
     case kingfisher
