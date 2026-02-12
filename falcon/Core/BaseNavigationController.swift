@@ -26,7 +26,6 @@ class BaseNavigationController: UINavigationController {
     
     // MARK: - Status Bar Style
     // 将状态栏样式控制权交给栈顶控制器
-    
     override var childForStatusBarStyle: UIViewController? {
         return topViewController
     }

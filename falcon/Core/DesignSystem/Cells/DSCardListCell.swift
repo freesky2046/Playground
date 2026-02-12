@@ -12,8 +12,15 @@ import SnapKit
 /// 包含：图标、标题、副标题、箭头、卡片背景
 class DSCardListCell: UITableViewCell {
     
+    // MARK: - Properties
+    public var elevation: DSCardView.Elevation = .none {
+        didSet {
+            applyShadow()
+        }
+    }
+    
     // MARK: - UI Elements
-    private let cardContainer: UIView = {
+    public let cardContainer: UIView = {
         let v = UIView()
         v.backgroundColor = DSColor.backgroundSecondary
         v.layer.cornerRadius = DSSpacing.radiusMedium
@@ -100,6 +107,17 @@ class DSCardListCell: UITableViewCell {
             make.top.greaterThanOrEqualToSuperview().offset(DSSpacing.m)
             make.bottom.lessThanOrEqualToSuperview().offset(-DSSpacing.m)
         }
+        
+        // Apply initial shadow state
+        applyShadow()
+    }
+    
+    private func applyShadow() {
+        cardContainer.layer.shadowColor = UIColor.black.cgColor
+        cardContainer.layer.shadowOpacity = elevation.opacity
+        cardContainer.layer.shadowOffset = elevation.offset
+        cardContainer.layer.shadowRadius = elevation.radius
+        cardContainer.layer.masksToBounds = false
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {

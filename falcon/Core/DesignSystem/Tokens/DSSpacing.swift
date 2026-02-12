@@ -6,7 +6,7 @@
 //
 
 import CoreGraphics
-import Foundation
+import UIKit
 
 /// Design System Spacing & Layout Tokens
 /// 遵循 4px/8px 栅格系统
@@ -37,4 +37,17 @@ public struct DSSpacing {
     public static let radiusLarge: CGFloat = 12.0
     /// 超大圆角 16pt (弹窗)
     public static let radiusXLarge: CGFloat = 16.0
+    
+    // MARK: - Safe Area
+    /// 顶部安全区域高度
+    public static var safeAreaTop: CGFloat {
+        let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        return scene?.windows.first(where: { $0.isKeyWindow })?.safeAreaInsets.top ?? 0
+    }
+    
+    /// 底部安全区域高度
+    public static var safeAreaBottom: CGFloat {
+        let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        return scene?.windows.first(where: { $0.isKeyWindow })?.safeAreaInsets.bottom ?? 0
+    }
 }

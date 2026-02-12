@@ -69,6 +69,16 @@ public class DSAvatar: UIView {
         setupUI()
     }
     
+    /// Convenience initializer
+    public convenience init(size: Size = .medium, text: String? = nil, image: UIImage? = nil) {
+        self.init(size: size)
+        if let image = image {
+            setImage(image)
+        } else if let text = text {
+            setInitials(text)
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()

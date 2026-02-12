@@ -647,22 +647,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1CE2F3B1-41A8-4C2D-A3CC-62CEA7C87D14"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/JXSegmentedView/Sources/Core/JXSegmentedView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "listContainer"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "9E288A99-2B57-435E-926A-2AC20FE2BC8B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -721,22 +705,6 @@
             startingLineNumber = "198"
             endingLineNumber = "198"
             landmarkName = "preferredProcessListViewDidScroll(scrollView:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5AABAEA1-0555-446C-8559-08D79A4E6B15"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "falcon/LearningModules/Rotation/RotationDemoViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
-            landmarkName = "requestGeometryUpdate(orientation:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
