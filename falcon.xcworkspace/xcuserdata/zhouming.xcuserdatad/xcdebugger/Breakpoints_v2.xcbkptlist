@@ -562,36 +562,6 @@
             endingLineNumber = "72"
             landmarkName = "SessionDataTask"
             landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "40ECD6E5-4AFB-4455-B2CB-0FC59507D76B - 713be8c009d3ca1a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Kingfisher.SessionDataTask.onTaskDone.getter : Kingfisher.Delegate&lt;(Swift.Result&lt;(Foundation.Data, Swift.Optional&lt;__C.NSURLResponse&gt;), Kingfisher.KingfisherError&gt;, Swift.Array&lt;Kingfisher.SessionDataTask.TaskCallback&gt;), ()&gt;"
-                  moduleName = "Kingfisher"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhouming/Desktop/falcon/Pods/Kingfisher/Sources/Networking/SessionDataTask.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0">
-               </Location>
-               <Location
-                  uuid = "40ECD6E5-4AFB-4455-B2CB-0FC59507D76B - b548bf35dc24d1d7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Kingfisher.SessionDataTask.init(task: __C.NSURLSessionDataTask) -&gt; Kingfisher.SessionDataTask"
-                  moduleName = "Kingfisher"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhouming/Desktop/falcon/Pods/Kingfisher/Sources/Networking/SessionDataTask.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -751,6 +721,22 @@
             startingLineNumber = "198"
             endingLineNumber = "198"
             landmarkName = "preferredProcessListViewDidScroll(scrollView:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5AABAEA1-0555-446C-8559-08D79A4E6B15"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "falcon/LearningModules/Rotation/RotationDemoViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
+            landmarkName = "requestGeometryUpdate(orientation:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

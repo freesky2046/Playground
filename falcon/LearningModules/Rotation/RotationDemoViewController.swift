@@ -252,7 +252,7 @@ class RotationDemoViewController: UIViewController {
         // 所以通常需要配合修改 AppDelegate 的 orientationLock
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             // 临时放开全局限制，允许旋转到目标方向
-            appDelegate.orientationLock = .allButUpsideDown
+            appDelegate.orientationLock = .portrait
         }
         
         if #available(iOS 16.0, *) {
