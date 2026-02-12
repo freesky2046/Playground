@@ -99,4 +99,19 @@ class MDTabbarController: UITabBarController {
         tabBar.tintColor = DSColor.tabBarSelected
     }
 
+    // MARK: - Rotation Control
+    // 将旋转控制权交给当前选中的控制器
+    
+    override var shouldAutorotate: Bool {
+        return selectedViewController?.shouldAutorotate ?? super.shouldAutorotate
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return selectedViewController?.supportedInterfaceOrientations ?? super.supportedInterfaceOrientations
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return selectedViewController?.preferredInterfaceOrientationForPresentation ?? super.preferredInterfaceOrientationForPresentation
+    }
+
 }

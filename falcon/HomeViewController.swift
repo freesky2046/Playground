@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
     
     var dataList: [ItemModel] = [
         ItemModel(title: "Basic Knowledge", subtitle: "队列、锁、运行时、Timer 等基础知识", icon: "book.closed.fill", actionKey: "BaiscKnowledge"),
-        ItemModel(title: "Rotation", subtitle: "横竖屏旋转控制与适配", icon: "arrow.triangle.2.circlepath", actionKey: "Rotation"),
+        ItemModel(title: "Rotation", subtitle: "横竖屏旋转最佳实践演示", icon: "arrow.triangle.2.circlepath", actionKey: "Rotation"),
         ItemModel(title: "UIKit Extension", subtitle: "常用 UI 控件封装与扩展", icon: "paintbrush.fill", actionKey: "UIKitExtension"),
         ItemModel(title: "Design System", subtitle: "Design Tokens & Components", icon: "swatchpalette.fill", actionKey: "DesignSystem"), // 新增入口
         ItemModel(title: "YYText", subtitle: "富文本布局与渲染", icon: "text.alignleft", actionKey: "YYText"),
@@ -97,7 +97,8 @@ extension HomeViewController: UITableViewDelegate {
                 tabBar.selectedIndex = 1
             }
         case "Rotation":
-            let rotationVC = RotationDemoViewController()
+            // 切换到最佳实践演示
+            let rotationVC = RotationBestPracticeMenuViewController()
             navigationController?.pushViewController(rotationVC, animated: true)
         case "Kingfisher":
             let kingfisher = KingfisherViewController()

@@ -228,7 +228,23 @@ class RotationDemoViewController: UIViewController {
         return supportedOrientations
     }
     
-    // 3. 强制旋转工具方法
+    // 3. 首选方向 (preferredInterfaceOrientationForPresentation)
+    // 仅在以下情况生效：
+    // 1. 模态弹出 (present) 该控制器时
+    // 2. 该控制器是 Window 的根控制器时
+    // ⚠️ 注意：如果是 Push 进来的，此方法会被忽略，系统会尽量保持上一页的方向
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        // 如果支持的方向里包含竖屏，优先竖屏；否则取第一个支持的方向
+        if supportedOrientations.contains(.portrait) {
+            return .portrait
+        } else if supportedOrientations.contains(.landscapeLeft) {
+            return .landscapeLeft
+        } else {
+            return .landscapeRight
+        }
+    }
+    
+    // 4. 强制旋转工具方法
     // 核心原理：通知系统界面方向需要更新
     private func requestGeometryUpdate(orientation: UIInterfaceOrientation) {
         
