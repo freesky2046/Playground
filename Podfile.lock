@@ -1,8 +1,13 @@
 PODS:
   - Alamofire (5.10.2)
   - Cache (6.0.0)
+  - DisplayCriteria (1.1.0)
   - DZNEmptyDataSet (1.8.1)
   - ESTabBarController-swift (2.8.0)
+  - FFmpegKit (6.1.0):
+    - FFmpegKit/FFmpegKit (= 6.1.0)
+  - FFmpegKit/FFmpegKit (6.1.0):
+    - Libass
   - IQKeyboardCore (1.0.8)
   - IQKeyboardManagerSwift (8.0.1):
     - IQKeyboardManagerSwift/Appearance (= 8.0.1)
@@ -44,9 +49,40 @@ PODS:
   - JXPagingView/Paging (2.1.3)
   - JXSegmentedView (1.4.1)
   - Kingfisher (8.3.2)
+  - KSPlayer (1.1.0):
+    - KSPlayer/Audio (= 1.1.0)
+    - KSPlayer/AVPlayer (= 1.1.0)
+    - KSPlayer/Core (= 1.1.0)
+    - KSPlayer/MEPlayer (= 1.1.0)
+    - KSPlayer/Metal (= 1.1.0)
+    - KSPlayer/Subtitle (= 1.1.0)
+    - KSPlayer/SwiftUI (= 1.1.0)
+    - KSPlayer/Video (= 1.1.0)
+  - KSPlayer/Audio (1.1.0):
+    - KSPlayer/Core
+  - KSPlayer/AVPlayer (1.1.0):
+    - DisplayCriteria
+  - KSPlayer/Core (1.1.0):
+    - KSPlayer/AVPlayer
+  - KSPlayer/MEPlayer (1.1.0):
+    - FFmpegKit
+    - KSPlayer/AVPlayer
+    - KSPlayer/Metal
+    - KSPlayer/Subtitle
+  - KSPlayer/Metal (1.1.0)
+  - KSPlayer/Subtitle (1.1.0)
+  - KSPlayer/SwiftUI (1.1.0):
+    - KSPlayer/AVPlayer
+  - KSPlayer/Video (1.1.0):
+    - KSPlayer/Core
+    - KSPlayer/Subtitle
+  - Libass (0.17.1):
+    - Libass/Libass (= 0.17.1)
+  - Libass/Libass (0.17.1)
   - lottie-ios (4.5.2)
   - MBProgressHUD (1.2.0)
   - SnapKit (5.7.1)
+  - Toast (4.1.1)
   - YQKingfisher (6.3.1.2)
   - YQPhotoBrowser (0.4.0):
     - SnapKit
@@ -60,15 +96,20 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Cache
+  - DisplayCriteria (from `https://github.com/kingslay/KSPlayer.git`, branch `main`)
   - DZNEmptyDataSet
   - ESTabBarController-swift
+  - FFmpegKit (from `https://github.com/kingslay/FFmpegKit.git`, branch `main`)
   - IQKeyboardManagerSwift
   - JXPagingView/Paging
   - JXSegmentedView
   - Kingfisher
+  - KSPlayer (from `https://github.com/kingslay/KSPlayer.git`, branch `main`)
+  - Libass (from `https://github.com/kingslay/FFmpegKit.git`, branch `main`)
   - lottie-ios
   - MBProgressHUD
   - SnapKit (~> 5.7)
+  - Toast
   - YQPhotoBrowser
   - YYCache
   - YYText
@@ -94,17 +135,48 @@ SPEC REPOS:
     - lottie-ios
     - MBProgressHUD
     - SnapKit
+    - Toast
     - YQKingfisher
     - YQPhotoBrowser
     - YYCache
     - YYText
     - ZLPhotoBrowser
 
+EXTERNAL SOURCES:
+  DisplayCriteria:
+    :branch: main
+    :git: https://github.com/kingslay/KSPlayer.git
+  FFmpegKit:
+    :branch: main
+    :git: https://github.com/kingslay/FFmpegKit.git
+  KSPlayer:
+    :branch: main
+    :git: https://github.com/kingslay/KSPlayer.git
+  Libass:
+    :branch: main
+    :git: https://github.com/kingslay/FFmpegKit.git
+
+CHECKOUT OPTIONS:
+  DisplayCriteria:
+    :commit: bb6d367c02f3247ef3f328dc0cfea34e77aef7c5
+    :git: https://github.com/kingslay/KSPlayer.git
+  FFmpegKit:
+    :commit: d7048037a2eb94a3b08113fbf43aa92bdcb332d9
+    :git: https://github.com/kingslay/FFmpegKit.git
+  KSPlayer:
+    :commit: bb6d367c02f3247ef3f328dc0cfea34e77aef7c5
+    :git: https://github.com/kingslay/KSPlayer.git
+  Libass:
+    :commit: d7048037a2eb94a3b08113fbf43aa92bdcb332d9
+    :git: https://github.com/kingslay/FFmpegKit.git
+
 SPEC CHECKSUMS:
   Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
   Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
+  DisplayCriteria: bb0a90faf14b30848bc50ac0516340ce50164187
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   ESTabBarController-swift: 05593a6ad64700b03c0eb60ff625916370aa4136
+  FFmpegKit: 3885085fbbc320745838ee4c8a1f9c5e5953dab2
   IQKeyboardCore: 8652977ec919cf5351aa2977fedd1a6546476fbc
   IQKeyboardManagerSwift: 835fc9c6e4732398113406d84900ad2e8f141218
   IQKeyboardNotification: d7382c4466c5a5adef92c7452ebf861b36050088
@@ -116,15 +188,18 @@ SPEC CHECKSUMS:
   JXPagingView: afdd2e9af09c90160dd232b970d603cc6e7ddd0e
   JXSegmentedView: cd73555ce2134d1656db2cb383ba9c2f36fb5078
   Kingfisher: 0621d0ac0c78fecb19f6dc5303bde2b52abaf2f5
+  KSPlayer: f163ac6195f240b6fa5b8225aeb39ec811a70c62
+  Libass: e88af2324e1217e3a4c8bdc675f6f23a9dfc7677
   lottie-ios: 96784afc26ea031d3e2b6cae342a4b8915072489
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
+  Toast: 1f5ea13423a1e6674c4abdac5be53587ae481c4e
   YQKingfisher: 0f07510aaed196a3364af97eeea5e5376fb23810
   YQPhotoBrowser: 6bdfee44a426cd455ca8dbb3864c124b7a841a0d
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   ZLPhotoBrowser: 9fdd801da47d5aaff778b8213fc711bbadab9cb2
 
-PODFILE CHECKSUM: 81f22fa1fb79faad0e3ec239bc9bca5fcf5d43d2
+PODFILE CHECKSUM: 72cec83fb6d2c0655e12029de72ae89a97b0ce0f
 
 COCOAPODS: 1.16.2

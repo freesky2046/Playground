@@ -1,7 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '13.0'
 
-target 'MasonryDemo' do
+target 'falcon' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   # 基础 UI 布局库
@@ -29,7 +29,13 @@ target 'MasonryDemo' do
   pod 'DZNEmptyDataSet'          # 空状态、无网络、错误页面显示库，支持 UITableView 和 UICollectionView
   pod 'MBProgressHUD'
   pod "ESTabBarController-swift"
+  pod "Toast"
 #  pod 'FDFullscreenPopGesture'  # 全屏侧滑返回, 已经用 MDFullscreenPopGesture实现
+
+  pod 'KSPlayer',:git => 'https://github.com/kingslay/KSPlayer.git', :branch => 'main'
+  pod 'DisplayCriteria',:git => 'https://github.com/kingslay/KSPlayer.git', :branch => 'main'
+  pod 'FFmpegKit',:git => 'https://github.com/kingslay/FFmpegKit.git', :branch => 'main'
+  pod 'Libass',:git => 'https://github.com/kingslay/FFmpegKit.git', :branch => 'main'
 
 
   post_install do |installer|

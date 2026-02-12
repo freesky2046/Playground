@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Libass/Libass-xcframeworks.sh
+${PODS_ROOT}/Libass/Sources/libfreetype.xcframework
+${PODS_ROOT}/Libass/Sources/libfribidi.xcframework
+${PODS_ROOT}/Libass/Sources/libharfbuzz.xcframework
+${PODS_ROOT}/Libass/Sources/libass.xcframework
