@@ -17,6 +17,8 @@ enum Route: RouteConvertible {
     case kingfisherBaisc
     case basicKnowledge
     case thirdParty
+    case networkDemo
+    case gistDetail
 }
 
 extension Route {
@@ -38,6 +40,10 @@ extension Route {
             "basicKnowledge"
         case .thirdParty:
             "thirdParty"
+        case .networkDemo:
+            "networkDemo"
+        case .gistDetail:
+            "gistDetail"
         }
     }
     
@@ -59,6 +65,10 @@ extension Route {
             return BasicKnowledgeViewController.self
         case .thirdParty:
             return UsageThirdPartyViewController.self
+        case .networkDemo:
+            return NetworkDemoViewController.self
+        case .gistDetail:
+            return GistDetailViewController.self
         }
     }
 }

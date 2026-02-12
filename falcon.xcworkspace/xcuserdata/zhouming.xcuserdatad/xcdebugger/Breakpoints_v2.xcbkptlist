@@ -562,6 +562,36 @@
             endingLineNumber = "72"
             landmarkName = "SessionDataTask"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "40ECD6E5-4AFB-4455-B2CB-0FC59507D76B - 713be8c009d3ca1a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kingfisher.SessionDataTask.onTaskDone.getter : Kingfisher.Delegate&lt;(Swift.Result&lt;(Foundation.Data, Swift.Optional&lt;__C.NSURLResponse&gt;), Kingfisher.KingfisherError&gt;, Swift.Array&lt;Kingfisher.SessionDataTask.TaskCallback&gt;), ()&gt;"
+                  moduleName = "Kingfisher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhouming/Desktop/falcon/Pods/Kingfisher/Sources/Networking/SessionDataTask.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "40ECD6E5-4AFB-4455-B2CB-0FC59507D76B - b548bf35dc24d1d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kingfisher.SessionDataTask.init(task: __C.NSURLSessionDataTask) -&gt; Kingfisher.SessionDataTask"
+                  moduleName = "Kingfisher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhouming/Desktop/falcon/Pods/Kingfisher/Sources/Networking/SessionDataTask.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -706,6 +736,82 @@
             endingLineNumber = "198"
             landmarkName = "preferredProcessListViewDidScroll(scrollView:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EE77C2A7-EF50-49D4-8450-9A6CA70CF052"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "falcon/LearningModules/Alamofire/Encapsulation/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "handleResponse(res:decodeType:needCache:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "220AD1AC-C26B-4790-81E5-9D727D8E9ADE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "falcon/LearningModules/Alamofire/Encapsulation/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "handleResponse(res:decodeType:needCache:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "220AD1AC-C26B-4790-81E5-9D727D8E9ADE - 52dc68fa243939f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "falcon.NetworkManager.handleResponse&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(res: Alamofire.DataResponse&lt;Foundation.Data, Alamofire.AFError&gt;, decodeType: &#x3c4;_0_0.Type, needCache: Swift.Bool, completionHandler: (Swift.Result&lt;&#x3c4;_0_0, Alamofire.AFError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "falcon.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhouming/Desktop/falcon/falcon/LearningModules/Alamofire/Encapsulation/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132">
+               </Location>
+               <Location
+                  uuid = "220AD1AC-C26B-4790-81E5-9D727D8E9ADE - 52dc68fa243939f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "falcon.NetworkManager.handleResponse&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(res: Alamofire.DataResponse&lt;Foundation.Data, Alamofire.AFError&gt;, decodeType: &#x3c4;_0_0.Type, needCache: Swift.Bool, completionHandler: (Swift.Result&lt;&#x3c4;_0_0, Alamofire.AFError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "falcon.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhouming/Desktop/falcon/falcon/LearningModules/Alamofire/Encapsulation/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132">
+               </Location>
+               <Location
+                  uuid = "220AD1AC-C26B-4790-81E5-9D727D8E9ADE - 52dc68fa243939f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "falcon.NetworkManager.handleResponse&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(res: Alamofire.DataResponse&lt;Foundation.Data, Alamofire.AFError&gt;, decodeType: &#x3c4;_0_0.Type, needCache: Swift.Bool, completionHandler: (Swift.Result&lt;&#x3c4;_0_0, Alamofire.AFError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "falcon.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhouming/Desktop/falcon/falcon/LearningModules/Alamofire/Encapsulation/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

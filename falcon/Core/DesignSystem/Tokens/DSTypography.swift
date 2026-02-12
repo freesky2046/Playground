@@ -45,4 +45,10 @@ public struct DSTypography {
     public static let detailTitle = h1
     /// 详情页正文 (通常用 16pt-17pt Regular) - 建议配合行间距使用
     public static let detailBody = UIFont.systemFont(ofSize: 17, weight: regular)
+    
+    /// 大号正文 - 18pt Regular
+    public static let bodyLarge = UIFont.systemFont(ofSize: 18, weight: regular)
 }
+
+/// Compatibility Alias
+public typealias DSFont = DSTypography
