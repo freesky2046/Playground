@@ -47,7 +47,8 @@ class BasicKnowledgeViewController: UIViewController {
         ItemModel(title: "Time Profiler (CPU)", subtitle: "模拟 CPU 卡顿场景 (JSON/递归/IO)", icon: "cpu", actionKey: "TimeProfiler"),
         ItemModel(title: "Core Animation (GPU)", subtitle: "模拟 GPU 卡顿场景 (离屏渲染/混合)", icon: "display", actionKey: "CoreAnimation"),
         ItemModel(title: "RunLoop", subtitle: "Main RunLoop 状态监听与卡顿原理", icon: "arrow.triangle.2.circlepath", actionKey: "RunLoop"),
-        ItemModel(title: "Memory", subtitle: "Memory 内存优化", icon: "arrow.triangle.2.circlepath", actionKey: "Memory")
+        ItemModel(title: "Memory", subtitle: "Memory 内存优化", icon: "arrow.triangle.2.circlepath", actionKey: "Memory"),
+        ItemModel(title: "StackView", subtitle: "UIStackView 核心属性演示", icon: "square.stack.3d.down.right.fill", actionKey: "StackView")
     ]
     
     lazy var tableView: UITableView = {
@@ -125,6 +126,9 @@ extension BasicKnowledgeViewController: UITableViewDelegate {
             navigationController?.pushViewController(vc, animated: true)
         case "Memory":
             let vc = MemoryLeakDemoViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case "StackView":
+            let vc = StackViewDemoViewController()
             navigationController?.pushViewController(vc, animated: true)
         default:
             break

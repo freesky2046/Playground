@@ -30,6 +30,7 @@ extension UIView {
     
     func hideEmptyView() {
         emptyView?.removeFromSuperview()
+        self.emptyView = nil
     }
 }
 
@@ -70,10 +71,13 @@ class MDEmptyView: UIView {
     
     var onTap: (() -> Void)?
     
-    private lazy var contentView: UIView = {
-        let contentView = UIView()
-        contentView.backgroundColor = .clear
-        return contentView
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fill // 和axis一致方向, 默认为fill
+        stackView.alignment = .center  // 和axis垂直方向
+        stackView.spacing = 16
+        return stackView
     }()
     
     private lazy var titleLabel: UILabel = {
@@ -117,31 +121,16 @@ class MDEmptyView: UIView {
     }
     
     private func setupUI() {
-        addSubview(contentView)
-        contentView.snp.makeConstraints { make in
+        addSubview(stackView)
+        stackView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.width.equalToSuperview()
-        }
-        contentView.addSubview(imageView)
-        imageView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.centerX.equalToSuperview()
-        }
-        contentView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(10.0)
-            make.width.equalToSuperview()
-            make.centerX.equalToSuperview()
+            make.left.right.equalToSuperview().inset(20)
         }
         
-        contentView.addSubview(button)
-        button.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10.0)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
+        stackView.addArrangedSubview(imageView)
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(button)
         button.addTarget(self, action: #selector(buttonDidPressed), for: .touchUpInside)
-
     }
     
     func update(with type: MDEmptyViewType) {
@@ -149,7 +138,6 @@ class MDEmptyView: UIView {
         imageView.image = UIImage(named: type.image)
         button.isHidden = type.buttonTitle.isEmpty == true
         button.setTitle(type.buttonTitle, for: .normal)
-        
     }
     
     @objc func buttonDidPressed() {
