@@ -51,7 +51,6 @@ class SimpleRouter {
             Navigationer.push(targetVCType: route.target , params: params, animated: animated)
         case .present:
             Navigationer.present(targetVCType: route.target, params: params,animated: animated)
-            
         }
     }
     

@@ -22,8 +22,6 @@ extension UINavigationController {
             }
             
             let delegate = UINavigationBarControllerDelegate(navigationController: self)
-            
-            delegate.navigationController = self
             objc_setAssociatedObject(self, &AssociatedObjectKeys.kmd_navigationControllerDelegateKey, delegate, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             return delegate
         }

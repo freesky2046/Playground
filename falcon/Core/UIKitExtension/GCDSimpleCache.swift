@@ -3,7 +3,11 @@ import Foundation
 
 /// 使用 GCD Barrier 实现的读写分离缓存
 /// 特点：读并发，写串行
-class GCDSimpleCache<Key: Hashable, Value> {
+final class GCDSimpleCache<Key: Hashable, Value> {
+    
+    deinit {
+        // Explicit deinit to help compiler
+    }
     
     // 内部存储容器 (非线程安全，需要锁保护)
     private var storage: [Key: Value] = [:]

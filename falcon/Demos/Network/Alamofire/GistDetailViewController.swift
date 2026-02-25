@@ -25,7 +25,7 @@ class GistDetailViewController: UIViewController, RouteCompatible {
     // MARK: - UI Components
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = DSTypography.h1
+        label.font = DSFont.h1
         label.textColor = DSColor.textPrimary
         label.textAlignment = .center
         return label
@@ -33,7 +33,7 @@ class GistDetailViewController: UIViewController, RouteCompatible {
     
     private lazy var infoLabel: UILabel = {
         let label = UILabel()
-        label.font = DSTypography.h2
+        label.font = DSFont.bodyLarge
         label.textColor = DSColor.textSecondary
         label.textAlignment = .center
         return label

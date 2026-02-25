@@ -15,7 +15,7 @@ class CacheImitateViewController: UIViewController {
         
         // 读取本地.json
         let path = Bundle.main.path(forResource: "1", ofType: "json")!
-        let jsonData = try! Data(contentsOf: URL(filePath: path))
+        let jsonData = try! Data(contentsOf: URL(fileURLWithPath: path))
         let json = String(data:jsonData, encoding: .utf8)
         print(jsonData.count)
         // 字符串的字节数, 一个json数据大概是几百字节到1000字节

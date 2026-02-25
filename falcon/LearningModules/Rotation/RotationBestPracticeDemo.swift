@@ -86,6 +86,8 @@ class RotationBestPracticeMenuViewController: UIViewController {
 class PortraitOnlyViewController: UIViewController {
     
     override func viewDidLoad() {
+        print("1.viewDidLoad")
+
         super.viewDidLoad()
         title = "Portrait Only"
         view.backgroundColor = .systemYellow
@@ -101,9 +103,20 @@ class PortraitOnlyViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("2.viewWillAppear")
+
+        super.viewWillAppear(animated)
+    }
+    
     // 核心配置：只支持竖屏
-    override var shouldAutorotate: Bool { true }
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { .portrait }
+    override var shouldAutorotate: Bool {
+        true
+    }
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        print("3.supportedInterfaceOrientations")
+        return .portrait
+    }
 }
 
 // MARK: - 2. Forced Landscape Page (Video Style)

@@ -43,7 +43,11 @@ class BasicKnowledgeViewController: UIViewController {
         ItemModel(title: "Navigation", subtitle: "导航栏样式定制与交互", icon: "compass.drawing", actionKey: "Navigation"),
         ItemModel(title: "TabBar Appearance", subtitle: "TabBar 样式深度定制指南", icon: "menubar.dock.rectangle", actionKey: "TabBarAppearance"),
         ItemModel(title: "Design System", subtitle: "Banner, Card, Tokens 等组件展示", icon: "paintbrush.fill", actionKey: "DesignSystem"),
-        ItemModel(title: "Autolayout", subtitle: "自动布局优先级", icon: "paintbrush.fill", actionKey: "Autolayout")
+        ItemModel(title: "Autolayout", subtitle: "自动布局优先级", icon: "paintbrush.fill", actionKey: "Autolayout"),
+        ItemModel(title: "Time Profiler (CPU)", subtitle: "模拟 CPU 卡顿场景 (JSON/递归/IO)", icon: "cpu", actionKey: "TimeProfiler"),
+        ItemModel(title: "Core Animation (GPU)", subtitle: "模拟 GPU 卡顿场景 (离屏渲染/混合)", icon: "display", actionKey: "CoreAnimation"),
+        ItemModel(title: "RunLoop", subtitle: "Main RunLoop 状态监听与卡顿原理", icon: "arrow.triangle.2.circlepath", actionKey: "RunLoop"),
+        ItemModel(title: "Memory", subtitle: "Memory 内存优化", icon: "arrow.triangle.2.circlepath", actionKey: "Memory")
     ]
     
     lazy var tableView: UITableView = {
@@ -64,7 +68,7 @@ class BasicKnowledgeViewController: UIViewController {
         
         // 导航栏大标题风格
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.largeTitleDisplayMode = .never
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
@@ -108,8 +112,20 @@ extension BasicKnowledgeViewController: UITableViewDelegate {
             let vc = DesignSystemDemoViewController()
             navigationController?.pushViewController(vc, animated: true)
         case "Autolayout":
-            let autolayout = TestAutolayoutViewController()
+            let autolayout = LayoutConstraintViewController()
             navigationController?.pushViewController(autolayout, animated: true)
+        case "TimeProfiler":
+            let vc = PerformanceCPUDemoViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case "CoreAnimation":
+            let vc = PerformanceGPUDemoViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case "RunLoop":
+            let vc = RunLoopDemoViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case "Memory":
+            let vc = MemoryLeakDemoViewController()
+            navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }

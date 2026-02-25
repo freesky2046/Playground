@@ -82,7 +82,7 @@ extension UsageThirdPartyViewController: UITableViewDataSource, UITableViewDeleg
             let pagingview = JXPagingViewUseViewController()
             navigationController?.pushViewController(pagingview, animated: true)
         case "DZNEmptyDataSet":
-            let usage = DZNEmptyDataSetUsageViewController()
+            let usage = EmptyViewController()
             navigationController?.pushViewController(usage, animated: true)
         default:
             break

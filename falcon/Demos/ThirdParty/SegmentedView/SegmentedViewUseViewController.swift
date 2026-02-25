@@ -34,6 +34,7 @@ class SegmentedViewUseViewController: UIViewController  {
     private func setupNavigationBar() {
         // 恢复默认导航栏样式，保持统一
         md_hideNavigationBar = true
+//        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     private func setupSegmentedView() {
