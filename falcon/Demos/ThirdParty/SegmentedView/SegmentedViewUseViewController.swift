@@ -116,8 +116,9 @@ extension SegmentedViewUseViewController: JXSegmentedViewDelegate {
 class SegmentedListViewController: UIViewController, JXSegmentedListContainerViewListDelegate {
     
     var category: String = ""
-    
-    private lazy var tableView: UITableView = {
+    var scrollCallback: ((UIScrollView) -> Void)?
+
+    private(set) lazy var tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
         tv.backgroundColor = DSColor.backgroundSecondary // 浅灰色背景，突出卡片
         tv.separatorStyle = .none
@@ -211,5 +212,11 @@ extension SegmentedListViewController: UITableViewDelegate, UITableViewDataSourc
         // 模拟点击效果
         let item = items[indexPath.row]
         print("Selected: \(item.title)")
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollCallback?(scrollView)
+
+        
     }
 }

@@ -48,6 +48,8 @@ class BasicKnowledgeViewController: UIViewController {
         ItemModel(title: "Core Animation (GPU)", subtitle: "模拟 GPU 卡顿场景 (离屏渲染/混合)", icon: "display", actionKey: "CoreAnimation"),
         ItemModel(title: "RunLoop", subtitle: "Main RunLoop 状态监听与卡顿原理", icon: "arrow.triangle.2.circlepath", actionKey: "RunLoop"),
         ItemModel(title: "Memory", subtitle: "Memory 内存优化", icon: "arrow.triangle.2.circlepath", actionKey: "Memory"),
+        ItemModel(title: "Compositional Layout", subtitle: "复杂布局、网格、瀑布流演示", icon: "square.grid.3x3.fill", actionKey: "CompositionalLayout"),
+
         ItemModel(title: "StackView", subtitle: "UIStackView 核心属性演示", icon: "square.stack.3d.down.right.fill", actionKey: "StackView")
     ]
     
@@ -130,6 +132,9 @@ extension BasicKnowledgeViewController: UITableViewDelegate {
         case "StackView":
             let vc = StackViewDemoViewController()
             navigationController?.pushViewController(vc, animated: true)
+        case "CompositionalLayout":
+            break
+            
         default:
             break
         }

@@ -26,6 +26,7 @@ class UsageThirdPartyViewController: UIViewController {
         ItemModel(title: "ZLPhotoBrowser", subtitle: "高性能图片/视频选择框架", icon: "photo.on.rectangle.angled", actionKey: "ZLPhotoBrowser"),
         ItemModel(title: "Segment View", subtitle: "JXSegmentedView 分页控制组件", icon: "square.split.3x1.fill", actionKey: "segmentView"),
         ItemModel(title: "Paging View", subtitle: "JXPagingView 悬停列表组件", icon: "arrow.up.and.down.circle.fill", actionKey: "pagingView"),
+        ItemModel(title: "Paging View Nest SegmentView", subtitle: "JXPagingView 嵌套悬停", icon: "arrow.up.and.down.circle.fill", actionKey: "PagingNest"),
         ItemModel(title: "Empty Data Set", subtitle: "DZNEmptyDataSet 空状态管理", icon: "square.dashed", actionKey: "DZNEmptyDataSet")
     ]
     
@@ -80,6 +81,9 @@ extension UsageThirdPartyViewController: UITableViewDataSource, UITableViewDeleg
             navigationController?.pushViewController(segmentView, animated: true)
         case "pagingView":
             let pagingview = JXPagingViewUseViewController()
+            navigationController?.pushViewController(pagingview, animated: true)
+        case "PagingNest":
+            let pagingview = JXPagingNestCategoryViewController()
             navigationController?.pushViewController(pagingview, animated: true)
         case "DZNEmptyDataSet":
             let usage = EmptyViewController()

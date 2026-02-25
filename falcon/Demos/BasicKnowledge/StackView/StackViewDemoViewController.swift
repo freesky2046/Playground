@@ -14,8 +14,8 @@ class StackViewDemoViewController: UIViewController {
     private lazy var subjectStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.alignment = .fill
         stack.distribution = .fill
+        stack.alignment = .fill
         stack.spacing = 8
         stack.backgroundColor = .systemGray6
         stack.layer.borderColor = UIColor.red.cgColor

@@ -562,6 +562,36 @@
             endingLineNumber = "72"
             landmarkName = "SessionDataTask"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "40ECD6E5-4AFB-4455-B2CB-0FC59507D76B - 713be8c009d3ca1a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kingfisher.SessionDataTask.onTaskDone.getter : Kingfisher.Delegate&lt;(Swift.Result&lt;(Foundation.Data, Swift.Optional&lt;__C.NSURLResponse&gt;), Kingfisher.KingfisherError&gt;, Swift.Array&lt;Kingfisher.SessionDataTask.TaskCallback&gt;), ()&gt;"
+                  moduleName = "Kingfisher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhouming/Desktop/falcon/Pods/Kingfisher/Sources/Networking/SessionDataTask.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "40ECD6E5-4AFB-4455-B2CB-0FC59507D76B - b548bf35dc24d1d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kingfisher.SessionDataTask.init(task: __C.NSURLSessionDataTask) -&gt; Kingfisher.SessionDataTask"
+                  moduleName = "Kingfisher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhouming/Desktop/falcon/Pods/Kingfisher/Sources/Networking/SessionDataTask.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -680,7 +710,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "019AFB32-A758-4669-863D-75A72F1BF1D1"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/JXPagingView/Sources/JXPagingView/JXPagingView.swift"
@@ -738,6 +768,50 @@
             endingLineNumber = "132"
             landmarkName = "handleResponse(res:decodeType:needCache:completionHandler:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "220AD1AC-C26B-4790-81E5-9D727D8E9ADE - 52dc68fa243939f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "falcon.NetworkManager.handleResponse&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(res: Alamofire.DataResponse&lt;Foundation.Data, Alamofire.AFError&gt;, decodeType: &#x3c4;_0_0.Type, needCache: Swift.Bool, completionHandler: (Swift.Result&lt;&#x3c4;_0_0, Alamofire.AFError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "falcon.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhouming/Desktop/falcon/falcon/LearningModules/Alamofire/Encapsulation/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132">
+               </Location>
+               <Location
+                  uuid = "220AD1AC-C26B-4790-81E5-9D727D8E9ADE - 52dc68fa243939f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "falcon.NetworkManager.handleResponse&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(res: Alamofire.DataResponse&lt;Foundation.Data, Alamofire.AFError&gt;, decodeType: &#x3c4;_0_0.Type, needCache: Swift.Bool, completionHandler: (Swift.Result&lt;&#x3c4;_0_0, Alamofire.AFError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "falcon.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhouming/Desktop/falcon/falcon/LearningModules/Alamofire/Encapsulation/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132">
+               </Location>
+               <Location
+                  uuid = "220AD1AC-C26B-4790-81E5-9D727D8E9ADE - 52dc68fa243939f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "falcon.NetworkManager.handleResponse&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(res: Alamofire.DataResponse&lt;Foundation.Data, Alamofire.AFError&gt;, decodeType: &#x3c4;_0_0.Type, needCache: Swift.Bool, completionHandler: (Swift.Result&lt;&#x3c4;_0_0, Alamofire.AFError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "falcon.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhouming/Desktop/falcon/falcon/LearningModules/Alamofire/Encapsulation/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -862,8 +936,8 @@
             filePath = "falcon/Demos/BasicKnowledge/BasicKnowledgeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -898,6 +972,162 @@
             endingLineNumber = "594"
             landmarkName = "dzn_original_implementation(self)"
             landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "45A93F43-979F-4D7F-9BA2-99CB26518327"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/JXSegmentedView/Sources/Core/JXSegmentedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "686"
+            endingLineNumber = "686"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "45A93F43-979F-4D7F-9BA2-99CB26518327 - 4a69cf8b245a4d56"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JXSegmentedView.JXSegmentedView.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "JXSegmentedView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhouming/Desktop/falcon/Pods/JXSegmentedView/Sources/Core/JXSegmentedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "686"
+                  endingLineNumber = "686">
+               </Location>
+               <Location
+                  uuid = "45A93F43-979F-4D7F-9BA2-99CB26518327 - 4a69cf8b245a4d56"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JXSegmentedView.JXSegmentedView.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "JXSegmentedView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhouming/Desktop/falcon/Pods/JXSegmentedView/Sources/Core/JXSegmentedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "686"
+                  endingLineNumber = "686">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "204AA313-1E74-4698-9AA4-57C04156FE40"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/JXSegmentedView/Sources/Title/JXSegmentedTitleCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "reloadData(itemModel:selectedType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1942FEC5-C085-4B48-846F-BD3EDB3AE02D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/JXSegmentedView/Sources/Core/JXSegmentedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "687"
+            endingLineNumber = "687"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9FA6D42F-66FB-4386-B572-1C007CF706AA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/JXSegmentedView/Sources/Core/JXSegmentedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
+            landmarkName = "reloadDataWithoutListContainer()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9FA6D42F-66FB-4386-B572-1C007CF706AA - a80fa5ec8c4d280c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JXSegmentedView.JXSegmentedView.reloadDataWithoutListContainer() -&gt; ()"
+                  moduleName = "JXSegmentedView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhouming/Desktop/falcon/Pods/JXSegmentedView/Sources/Core/JXSegmentedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "293"
+                  endingLineNumber = "293">
+               </Location>
+               <Location
+                  uuid = "9FA6D42F-66FB-4386-B572-1C007CF706AA - a80fa5ec8c4d280c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JXSegmentedView.JXSegmentedView.reloadDataWithoutListContainer() -&gt; ()"
+                  moduleName = "JXSegmentedView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhouming/Desktop/falcon/Pods/JXSegmentedView/Sources/Core/JXSegmentedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "293"
+                  endingLineNumber = "293">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "71A66672-E608-476B-BFFE-B8AC6736EA74"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/JXSegmentedView/Sources/Core/JXSegmentedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
+            landmarkName = "dequeueReusableCell(withReuseIdentifier:at:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C822B2A5-62F9-4897-B8B3-111075EC8DBA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "falcon/Demos/ThirdParty/JXPagingView/Nest/JXPagingNestCategoryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "listViewDidScrollCallback(callback:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

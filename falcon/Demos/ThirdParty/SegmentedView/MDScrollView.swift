@@ -14,6 +14,7 @@ class MDScrollView: UIScrollView {
 
 extension MDScrollView: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        self.backgroundColor = .blue
         if let popGesture = UIViewController.current?.navigationController?.md_FullscreenPopGestureRecognizer,
            otherGestureRecognizer === popGesture, self.contentOffset.x <= 0 {
             return true
